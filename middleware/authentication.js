@@ -1,24 +1,52 @@
-const jwt=require("jsonwebtoken")
-const User=require("../model/userDb")
-require("dotenv").config()
-const secretKey=process.env.SECRET_KEY
+const jwt = require("jsonwebtoken");
+const UserDb = require("../model/userDb");
+require('dotenv').config();
 
+const secretKey = "thisissecret";
 
-exports.authorization = async(request,response,next)=>{
+exports.auth= async (request, response, next) => {
     try {
-        const token = request.headers.authorization;
-        const decode = jwt.verify(token,secretKey);
-        console.log(decode)
-        const user = await User.findByPk(decode.userId);
-        request.user = user;
-        next();
+        const authorizationHeader = request.headers.authorization;
+
+        // Check if the authorization header is present
+        if (!authorizationHeader) {
+            return response.status(401).json({ message: 'Authorization header is missing' });
+        }
+
+        const token = authorizationHeader.split(" ")[1];
+        // const token = authorizationHeader
         
+      
+
+        // Check if the token is present
+        if (!token) {
+            return response.status(401).json({ message: 'Token is missing' });
+        } else {
+            
+            const decode = jwt.verify(token, secretKey);
+            
+
+            // You can directly access the userId from the decoded payload
+            const userId = decode.userId;
+             
+
+            // You may want to handle different errors separately
+            const user = await UserDb.findByPk(userId);
+            
+
+            // Attach the user to the request for later use
+            request.user = user;
+            
+            next();
+        }
     } catch (error) {
         if (error.name === 'TokenExpiredError') {
-            response.status(401).json({ message: 'Time out please sign in' });
+            response.status(401).json({ message: 'Token expired, please sign in again' });
+        } else if (error.name === 'JsonWebTokenError') {
+            response.status(401).json({ message: 'Invalid token',error:error });
         } else {
-            console.log('Error:', error);
+            console.error('Error:', error);
             response.status(500).json({ message: 'Internal Server Error' });
         }
     }
-}
+};

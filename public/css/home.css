@@ -1,154 +1,214 @@
-body {
-    background: #f2f2f2;
-    background-image: url("./img/money.jpg");
+*{
     margin: 0;
     padding: 0;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-nav {
-    font-family: 'Aoboshi One', serif;
     color: black;
-    padding: 15px;
-    text-align: center;
+    
+overflow-x: hidden;
+ 
+}
+.main{
+    width:100%;
+    height:100vh;
+
     
 }
-
-nav a {
-    color: rgb(40, 4, 4);
-    text-decoration: none;
-    margin: 0 15px;
-}
-
-.hero {
-    font-family: 'Aoboshi One', serif;
-    position: absolute;
-    text-align: center;
-    padding: 70px 0;
-    width: 25rem;
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    left: 20rem;
-    top: 10rem;
-    animation-name: floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    margin-left: 30px;
-    margin-top: 5px;
-}
-
-.hero h1 {
-    color: #333;
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    color: #666;
-    font-size: 18px;
-    margin-bottom: 40px;
-}
-
-.hero button {
-    background-color: rgb(66, 197, 204);
-    color: white;
-    padding: 15px 30px;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-}
-
-footer {
-    background-color: rgb(66, 197, 204);
-    color: rgb(7, 0, 0);
-    text-align: center;
-    padding: 15px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-footer a {
-    color: rgb(13, 1, 1);
-    text-decoration: none;
-    margin: 0 15px;
-}
-
-nav {
-    display: flex;
+nav{
+    display:flex;
+  
     justify-content: space-between;
+    height: 10vh;
+    align-items: center;
+   
+    
+
 }
-
-@keyframes floating {
-    0% {
-        transform: translate(0, 0px);
-    }
-
-    50% {
-        transform: translate(0, 15px);
-    }
-
-    100% {
-        transform: translate(0, -0px);
-    }
-}
-
-#signuptext {
+.logo,.option a{
     text-decoration: none;
-    color: aliceblue;
+    margin: 0 1vw;
+    
 }
+.option i{
+    display: none ;
+}
+.logo{
+font-size: 30px;
+font-weight: 900;
+color: #006EE9;
+}
+.option{
+    display: flex;
+    gap: 10px;
+ 
+    padding: 1vw;
+    font-weight: 600;
+   
+}
+.logo span{
+    color: rgb(12, 0, 0);
+}
+.main .hero{
+    width: 100%;
+    height: calc(100% - 10vh);
 
-/* Media Queries for responsiveness */
+    display: flex;
+}
+.main .hero .left{
+    width:40%;
+    height: 100%;
+  
+    padding: 0 2vw ;
+   
+}
+.main .hero .right{
+    width:60%;
+    height: 100%;
+  
+}
+.main .hero .left h1,h3,button{
+    margin-left:3vw;
+    padding:0 3vw;}
+.main .hero .left h1{
+    font-size: 3.8vw;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   
+}
+.main .hero .left h1{
+    margin-top: 4vh;
+}
+.main .hero .left h1 span{
+    color: #006EE9;}
 
-@media screen and (max-width: 768px) {
-    .hero {
+    .main .hero .left h3{
+        font-size: 1vw;
+        margin: 1vw;
+        font-size: 1vw;
+        margin-left: 3.4vw;
+        font-weight: 100;
+    }
+    .main .hero .left button{
+        margin-right: 10px;
+        
+        color: aliceblue;
+        padding: .1vw;
+        margin: 2vw 6.3vw;
+        width: 10rem;
+        height: 3.5vw;
+        text-align: center;
+        border-radius: 3vh ; 
+        background-color: #006EE9;
+    }
+    .main .hero .left button a{
+        text-decoration: none;
+        color:#ffffff;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        border:2 px solid #006EE9 ;
+       
+        font-size: large;
+
+    }
+    .main .hero .left button a span{
+        color: #ffffff;
+        align-items: center;
+        text-align: center;
+        padding: 2px;
+    }
+
+    .right{
+        overflow: hidden;
+        position: relative;
+    }
+    .right img{
         width: 100%;
-        left: 0;
-        top: 5rem;
+        margin-top: -9vh;
+        background-size: cover;
+
     }
 
-    .hero button {
-        margin-top: 20px;
+    /* hover */
+    .main .hero .left button:hover {
+        background-color: #ffffff;
+        color: #006EE9;
     }
-}
+    .main .hero .left button:hover a, a span{
+        color:#006EE9;
+    }
+    .option a:hover{
+        background-color: #006EE9;
+        color: #ffffff;
 
-@media screen and (max-width: 600px) {
-    nav {
+    }
+
+    @media only screen and (max-width: 600px){
+       .option a{
+        display: none;
+       }
+       .option i{
+        display: inline;
+        margin-right:5vw ;
+       }
+       .logo a{
+        font-size: 5vw;
+        margin-left: 3vw;
+       }
+       .hero{
+       
         flex-direction: column;
-    }
+       }
+      .main .hero .left  {
+        width: 100%;
+        overflow: hidden;
+       
 
-    nav a {
-        margin: 5px 0;
+       }
+       .main .hero .left h1{
+        font-size: 5vh;
+       }
+       .main .hero .left h3{
+        font-size: 2.6vw;
+        margin-bottom: 2vh;
+        
+       }
+       .main .hero .left button{
+        height: 4vh;
+       }
+       .main .hero .right{
+        width: 100%;
+        overflow: hidden;
+       }
     }
+    @media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+   
+    .logo a{
+        font-size: 5vw;
+        margin-left: 3vw;
+       }
+       .hero{
+       
+        flex-direction: column;
+       }
+      .main .hero .left  {
+        width: 100%;
+        overflow: hidden;
+       
 
-    .hero {
-        padding: 50px 20px;
-    }
+       }
+       .main .hero .left h1{
+        font-size: 5vh;
+       }
+       .main .hero .left h3{
+        font-size: 2.6vw;
+        margin-bottom: 2vh;
+        
+       }
+       .main .hero .left button{
+        height: 4vh;
+       }
+       .main .hero .right{
+        width: 100%;
+        overflow: hidden;
+       }
 
-    .hero h1 {
-        font-size: 28px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-
-    .hero button {
-        padding: 12px 20px;
-    }
-}
-span{
-    color:blue;
-    font-size: x-large;
+  /* Styles */
 }

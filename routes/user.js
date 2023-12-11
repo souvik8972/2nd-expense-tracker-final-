@@ -5,7 +5,7 @@ const bcrypt=require("bcrypt")
 const jwt=require("jsonwebtoken")
 require('dotenv').config();
 
-const secretKey=process.env.SECRET_KEY
+const secretKey="thisissecret"
 
 route.get("/signup",(req,res)=>{
     res.sendFile("signup.html",{root:"views"})
@@ -29,7 +29,8 @@ if(user==""){
     await User.create({
         name:name,
         email:email,
-        password: hasHpasswords 
+        password: hasHpasswords,
+       
     })
 
 res.status(201).send("successfully created")
@@ -65,7 +66,7 @@ try {
 
         const passwordEncoded =await bcrypt.compare(password,user[0].password)
         if (passwordEncoded){
-            const token = jwt.sign({ userId: user[0].id, email: user[0].email }, secretKey, { expiresIn: "5d" });
+            const token = jwt.sign({ userId: user[0].id }, secretKey, { expiresIn: "5d" });
 
         res.status(200).json({token:token,user:user[0]})
         }else{

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    
+<div class="main">
+    <nav>
+        <h1 class="log">Expense Buddy</h1>
+        <div class="option">
+            <div class="left">
+                <ul>
+                    <li><a href="">Dashboard</a></li>
+                    <li><a href="">Report 👑</a></li>
+                    <li><a href="">Leaderboard 👑</a></li>
+                    
+                </ul>
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="" id="rzp-button1">Buy Prime</a></li>
+                   
+                    <li><button id="logout">Logout</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="addExpenseForm">
+        <div class="img"></div>
+        <div class="form"> 
+            <h1>Add Expense</h1>
+            <form action="" method="" class="form" id="form">
+         <label for="options">Category;</label>
+        <select id="options" name="options">
+            <option value="Others"></option>
+            <option value="Movie">Movie</option>
+            <option value="Fuel"> Fuel</option>
+            <option value="Food">Food</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Others">Others</option>
+        </select>
+        <label for="pmethod">Payment method</label>
+        <input type="text" name="pmethod" id="">
+        <label for="amount">Amount</label>
+        <input type="number" name="amount" id="">
+        <label for="date">Date</label>
+        <input type="date" name="date" id="">
+        <button id="btn"> Add expense</button>
+                
+    
+            </form></div>
+            <div class="img2"></div>
+       
+    </div>
+
+    <div class="styled-table">
+        <h2>Expense List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Payment Method</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="expenseTableBody">
+                <!-- Dummy Data -->
+                <tr>
+                    <!-- <td>Movie</td>
+                    <td>Credit Card</td>
+                    <td>20</td>
+                    <td>2023-12-01</td>
+                     <td><button id="deleteButton">Delete</button></td> 
+                    <td><button id="deleteButton" onclick=`deleteExpense(${expense.id})`>Delete</button></td> -->
+                </tr>
+                
+                <!-- Dummy Data -->
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+</body>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+<script src="/js/dashboard.js"></script>
+</html>

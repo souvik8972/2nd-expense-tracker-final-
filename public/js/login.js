@@ -16,7 +16,8 @@ async function login(e) {
         const response = await axios.post("http://localhost:8080/login", data);
 
         if (response.status === 200) {
-            localStorage.setItem("token", JSON.stringify({ name: response.data.user.name, token: response.data.token }));
+            
+            localStorage.setItem("token", JSON.stringify({ name:response.data.name,token: response.data.token }));
             Smessage.classList.add("success")
         setTimeout(()=> {Smessage.classList.remove("success")
         window.location.href="http://localhost:8080/dashboard"
