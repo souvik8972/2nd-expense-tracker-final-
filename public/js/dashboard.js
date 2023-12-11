@@ -11,7 +11,8 @@ function authentication() {
 const authaxis= axios.create({
       baseURL: 'http://localhost:8080',
       headers: {
-        'Authorization': `Bearer ${token}`,
+         'Authorization': `${token}`,
+      //   'Authorization': `Bearer ${token}`,
         'userName': `souvik`
       }
      
@@ -226,33 +227,46 @@ function logout(){
 //    }
 // }
 
+
+
 document.getElementById("rzp-button1").onclick = async function (e) {
+   console.log("waiting");
+   e.preventDefault();
+   const authenticatedAxios = authentication();
+
    try {
-      console.log("clicked");
-      const authaxios = await authentication(); // Added await here
-      const response = await authaxios.get("/premiummembership");
-      console.log(response);
+       const storedTokenWithBearer = localStorage.getItem("token");
+       const token = storedTokenWithBearer.substring("Bearer ".length);
 
-      var options = {
-         "key": response.data.key_id,
-         "order_id": response.data.order_id,
-         "handler": async function (response) {
-            await axios.post("/updatetransactionstatus", {
-               order_id: options.order_id,
-               payment_id: response.data.payment_id
-            });
-            alert("Yoho primemember successfully");
-         }
-      };
+       const response = await authenticatedAxios.post("/premiummembership");
+       console.log(response);
 
-      const rzp1 = new Razorpay(options);
-      rzp1.open();
-      e.preventDefault();
+       var options = {
+           key: response.data.key_id, 
+           order_id: response.data.order_id,
+           handler: async function (response) {
+               try {
+                   // Use options.order_id outside the options object
+                   await authenticatedAxios.post("/updatetransactionstatus", {
+                       order_id: options.order_id,
+                       payment_id: response.razorpay_payment_id,
+                   });
+               } catch (error) {
+                   console.log(error);
+               }
+           },
+       };
 
-      rzp1.on("payment.field", (response) => {
-         alert("nehi hua paisa dal re");
-      });
+       const rzp1 = new Razorpay(options);
+       rzp1.open();
+       e.preventDefault();
+
+       rzp1.on("payment.failed", (response, err) => {
+           alert("failed");
+           console.log(response);
+       });
    } catch (error) {
-      console.error(error); // Log the error for debugging
+       console.log(error);
    }
 };
+

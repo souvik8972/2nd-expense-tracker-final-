@@ -10,7 +10,7 @@ const authController= require("../middleware/authentication")
 const router = express.Router();
 
 //CREATE A ROUTER FOR PURCHASINNG
-router.get('/premiummembership',authController.auth,purchaseController.premiummembership);
+router.post('/premiummembership',authController.auth,purchaseController.premiummembership);
 router.put('/updatetransactionstatus',authController.auth,purchaseController.updatetransactionstatus); 
 
 module.exports = router;
