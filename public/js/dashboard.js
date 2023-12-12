@@ -2,10 +2,10 @@
 
 function authentication() {
   const tokenData = JSON.parse(localStorage.getItem('token'));
-console.log(tokenData)
+   console.log(tokenData)
   if (tokenData) {
     const { token } = tokenData;
-   //  console.log(token)
+  
 
     // Return the authenticated axios instance
 const authaxis= axios.create({
