@@ -199,3 +199,12 @@
     background-color: #ffffff;
     border: none;
 }
+#leaderboard,#report{
+    visibility: hidden;
+}
+.visibility{
+    visibility: hidden;
+}
+.visible{
+    visibility: hidden;
+}

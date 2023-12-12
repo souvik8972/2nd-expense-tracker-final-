@@ -1,12 +1,10 @@
 const express=require("express")
 const route =express.Router()
 
+const controller=require("../controller/homeController")
 
 
-
-route.get("/",(req,res)=>{
-    res.sendFile("home.html",{root:"views"})
-})
+route.get("/",controller.gethomepage)
 
 
 

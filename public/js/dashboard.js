@@ -2,9 +2,9 @@
 
 function authentication() {
   const tokenData = JSON.parse(localStorage.getItem('token'));
-
+console.log(tokenData)
   if (tokenData) {
-    const { token, name } = tokenData;
+    const { token } = tokenData;
    //  console.log(token)
 
     // Return the authenticated axios instance
@@ -26,15 +26,26 @@ return authaxis;
 
 
 document.addEventListener("DOMContentLoaded", function () {
+
+
+
+   const toke=localStorage.getItem('token');
+   const check =parseJwt(toke)
+   console.log(check)
+ if(check.ispremiumuser){
+    document.getElementById("rzp-button1").style.display="none"
+  document.getElementById("massage").innerHTML="Prime member"
+ }
+ 
   // Call authentication and use the returned axios instance
   const authenticatedAxios = authentication();
-
   const expenseForm = document.getElementById("form");
   expenseForm.addEventListener("submit", addExpense);
   const expenseTableBody = document.getElementById("expenseTableBody")
   expenseTableBody.addEventListener("click",deleteExpense)
   
   fetchExpenses();
+
 
 
   async function addExpense(e) {
@@ -102,40 +113,8 @@ document.addEventListener("DOMContentLoaded", function () {
      }
   }
 
-//   async function razorpayFun(e) {
-  
 
-//    try {
-//        const response = await authenticatedAxios.get("/premiummembership");
-//        console.log("Response from /primemembership:", response.data);
 
-//        const { name, email } = response.data;
-
-//        var options = {
-//            "key": response.data.key_id,
-//            "order_id": response.data.order_id,
-//            "handler": async function (response) {
-//                await authenticatedAxios.post("/updatetransactionstatus", {
-//                    order_id: options.order_id,
-//                    payment_id: response.razorpay_payment_id
-//                });
-//                alert("YOHOOO");
-//            }
-//        }
-
-//        var rzp1 = new Razorpay(options);
-//        rzp1.open();
-
-//        e.preventDefault();
-
-//        rzp1.on("payment_failed", (response) => {
-//            console.log(response);
-//            alert("payment_failed");
-//        });
-//    } catch (error) {
-//        console.error("Error in razorpayFun:", error);
-//    }
-// }
 
 
 
@@ -143,6 +122,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
  
 });
+
+
+
+
+
 document.getElementById("logout").addEventListener("click",logout)
 function logout(){
    localStorage.removeItem("token")
@@ -150,95 +134,28 @@ function logout(){
    
 }
 
+function parseJwt (token) {
+   var base64Url = token.split('.')[1];
+   var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+   var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+   }).join(''));
 
-// document.getElementById("rzp-button1").onclick =async function(e){
-//    try {
-//       console.log("clicked")
-//       const authaxios=await authentication()
-//       const response=await authaxios.get("/premiummembership")
-//       console.log(response)
-//       var options={
-//          "key":response.data.key_id,
-//          "order_id":response.data.order_id,
-//          "handler":async function(response){
-//             await axios.post("/updatetransactionstatus",{
-//                order_id:options.order_id,
-//                payment_id:response.data.payment_id
-//             })
-//             alert("Yoho primemember successfully")
-//          }
-//       }
-//       const rzp1=new Razorpay(options)
-//       rzp1.open()
-//       e.preventDefault()
-// rzp1.on("payment.field",(response)=>{
-//    alert("nehi hua paisa dal re")
-// })
-     
-
-//    } catch (error) {
-      
-//    }
-// }
+   return JSON.parse(jsonPayload);
+}
 
 
 
-
-// async function purchasepremium() {
-
-//    try {
-//        const authenticatedAxios=authentication();
-//        const response = await authenticatedAxios.get("/premiummembership");
-//        console.log("1")
-//        const { key_id, order_id } = response.data;
-//        const { name, email } = response.data.user;
-//        var options = {
-//            "key": key_id,
-//            "order_id": order_id,
-//            "description": "expense tracker",
-//            "handler": async function (response) {
-//                const premiumstatus = await authenticatedAxios.put("purchase/updatetransactionstatus", {
-//                    order_id: response.razorpay_order_id,
-//                    payment_id: response.razorpay_payment_id
-//                });
-//                alert(premiumstatus.data.message);
-//                window.location.href = "user";
-//            },
-//            "prefill": {
-//                "name": name,
-//                "email": email
-//            },
-//            "notes": {
-//                "address": "souvik Pvt.ltd Corporate Office"
-//            },
-//        };
-//        var rzp1 = new Razorpay(options);
-//        rzp1.on('payment.failed', function (response) {
-//            console.log(response);
-//            alert('Something went wrong Transaction failed');
-
-//        });
-//        document.getElementById('rzp-button1').onclick = function (e) {
-//            rzp1.open();
-//            e.preventDefault();
-//        }
-//    } catch (error) {
-//        console.log(error);
-//    }
-// }
-
-
-
-document.getElementById("rzp-button1").onclick = async function (e) {
+const  rz1=document.getElementById("rzp-button1").onclick = async function (e) {
    console.log("waiting");
    e.preventDefault();
-   const authenticatedAxios = authentication();
+   const authenticatedAxios = await authentication();
 
    try {
-       const storedTokenWithBearer = localStorage.getItem("token");
-       const token = storedTokenWithBearer.substring("Bearer ".length);
 
-       const response = await authenticatedAxios.post("/premiummembership");
+       
+
+       const response = await authenticatedAxios.get("/premiummembership");
        console.log(response);
 
        var options = {
@@ -247,10 +164,21 @@ document.getElementById("rzp-button1").onclick = async function (e) {
            handler: async function (response) {
                try {
                    // Use options.order_id outside the options object
-                   await authenticatedAxios.post("/updatetransactionstatus", {
+                 const res=  await authenticatedAxios.post("/updatetransactionstatus", {
                        order_id: options.order_id,
                        payment_id: response.razorpay_payment_id,
                    });
+                   const  rz1=document.getElementById("rzp-button1").innerText="prime member"
+                   rz1.disabled = true
+                  
+                   alert("Congratulations You are now Premium meember")
+                   document.getElementById("rzp-button1").style.display="none"
+                   
+                   document.getElementById("massage").innerHTML="Prime member"
+                   localStorage.setItem("token",res.data.token)
+                   
+
+
                } catch (error) {
                    console.log(error);
                }
@@ -259,7 +187,7 @@ document.getElementById("rzp-button1").onclick = async function (e) {
 
        const rzp1 = new Razorpay(options);
        rzp1.open();
-       e.preventDefault();
+       
 
        rzp1.on("payment.failed", (response, err) => {
            alert("failed");
@@ -269,4 +197,5 @@ document.getElementById("rzp-button1").onclick = async function (e) {
        console.log(error);
    }
 };
+
 
