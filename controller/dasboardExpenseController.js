@@ -1,6 +1,6 @@
 const Expense = require("../model/expenseDb");
 
-
+const User = require("../model/userDb")
 
 //get dashboard
 exports.getDashboard=(req,res)=>{
@@ -16,6 +16,16 @@ exports.getDashboard=(req,res)=>{
        pmethod,
        amount,
        date
+    }).then(()=>{
+      const total=Number(req.user.totalExpense)+Number(amount)
+      User.update(
+         {totalExpense:total},
+         {where:
+         {
+            id:req.user.id
+         }}
+      )
+
     })
     .then(() => {
        res.status(201).json({ success: true, message: "Expense added successfully" });

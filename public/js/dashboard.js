@@ -266,7 +266,7 @@ const row =document.createElement("tr")
 row.innerHTML=`
                   
 <td>${userData.name}</td>
-<td>${userData.total_spent} <span>Rs.</span></td>
+<td>${userData.totalExpense} <span>Rs.</span></td>
 
 
 `;

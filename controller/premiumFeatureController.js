@@ -1,32 +1,16 @@
+const UserDb = require("../model/userDb");
+const ExpenseDb = require("../model/expenseDb");
+const sequelize = require("../util/db");
 
-
-const UserDb=require("../model/userDb")
-const ExpenseDb=require("../model/expenseDb")
-const sequelize = require("../util/db")
-
-exports.leaderboard= async (req,res)=>{
+exports.leaderboard = async (req, res) => {
     try {
-        const leaderBoard=await UserDb.findAll(
-            {
-                attributes:["id","name", [
-                    sequelize.fn("COALESCE", sequelize.fn("sum", sequelize.col("expenses.amount")), 0.00),
-                    "total_spent",
-                  ],  ],
-                include:[
-                    {
-                        model:ExpenseDb,
-                        attributes:[]
-                    }
-                ],
-                group:["user.id"],
-                order:[['total_spent','DESC']]
-            }
-        )
+        const leaderBoard = await UserDb.findAll({
+            attributes: ['name','totalExpense' ],
+            order: [['totalExpense', 'DESC']]
+        });
 
-
-
- res.status(200).json(leaderBoard)
+        res.status(200).json(leaderBoard);
     } catch (error) {
-        res.json({error: error})
+        res.status(500).json({ error: error.message || 'Internal Server Error' });
     }
-}
+};
