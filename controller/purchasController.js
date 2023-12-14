@@ -4,8 +4,8 @@ const Order = require('../model/orders');
 const dotenv = require('dotenv');
 const Razorpay = require('razorpay');
 dotenv.config();
-const key_id = "rzp_test_ILnYc0JczhKmcZ";
-const key_secret = "2UGtWpcLYkD5Co34v52Gawpo";
+const key_id = "rzp_test_FQUGalowc8Wx10";
+const key_secret = "GGlxuOFmXDq2TxXymELHWKht";
 
 const secretKey="thisissecret"
 const jwt=require("jsonwebtoken")
@@ -53,7 +53,7 @@ exports.updatetransactionstatus = async (request, response, next) => {
             ),
         ]);
 
-        response.status(202).json({ success: true, message: "Thank you for being a premium user",token: jwt.sign({ userId: user.id,name:undefined,ispremiumuser:true}, secretKey, { expiresIn: "5d" }) });
+        response.status(202).json({ success: true, message: "Thank you for being a premium user",token: jwt.sign({ userId: user.id,name:user.name,ispremiumuser:true}, secretKey, { expiresIn: "5d" }) });
     } catch (error) {
         console.log(error);
         response.status(500).json({ success: false, message: "Error updating transaction" });

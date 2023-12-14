@@ -78,8 +78,3 @@ exports.postLogin =async(req,res)=>{
     
     
     }
-
-exports.genToken=(id,name,ispremiumuser,secretKey)=>{
-    jwt.sign({ userId: id,name:name,ispremiumuser}, secretKey, { expiresIn: "5d" })
-
-}

@@ -13,8 +13,8 @@ exports.auth= async (request, response, next) => {
             return response.status(401).json({ message: 'Authorization header is missing' });
         }
 
-        // const token = authorizationHeader.split(" ")[1];
-        const token = authorizationHeader
+        const token = authorizationHeader.split(" ")[1];
+        // const token = authorizationHeader
         
       
 

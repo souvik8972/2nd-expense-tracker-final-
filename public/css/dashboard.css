@@ -1,6 +1,7 @@
 *{
     margin :0;
     padding: 0;
+   
 
  
 }
@@ -200,11 +201,5 @@
     border: none;
 }
 #leaderboard,#report{
-    visibility: hidden;
-}
-.visibility{
-    visibility: hidden;
-}
-.visible{
-    visibility: hidden;
+    display: none;
 }
