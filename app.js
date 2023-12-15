@@ -12,6 +12,7 @@ const userRoute=require("./routes/user")
 const dashboardRoute=require("./routes/dashboard")
 const primemembership=require("./routes/purchase")
 const premiumFeature=require("./routes/premiumFeature")
+const password=require("./routes/password")
 
 //
 app.use(express.static(path.join(__dirname, "public")))
@@ -25,9 +26,10 @@ app.use(userRoute)
 app.use(dashboardRoute )
 app.use(primemembership)
 app.use("/premium",premiumFeature)
+app.use(password)
 
 
-//app
+//hasmany relations
 User.hasMany(Expense)
 Expense.belongsTo(User,
     {constraints:true, onDelete:'CASCADE'}
