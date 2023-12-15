@@ -7,6 +7,7 @@ const jwt=require("jsonwebtoken")
 const secret="thisissecret"
 
 
+var nodemailer = require('nodemailer');
 
 
 
@@ -17,7 +18,7 @@ route.get("/forgot-password",(req,res)=>{
 
 route.post("/forgot-password",async(req,res)=>{
 
-   const email="souvik8582@gmail.com"
+   const email=req.body.email;
  
    
 
@@ -33,6 +34,29 @@ route.post("/forgot-password",async(req,res)=>{
         console.log(oldUser.email)
         const token=jwt.sign({email:oldUser.email ,id:oldUser.id},secret,{expiresIn:"10m"})
         const link=`http://localhost:8080/resetpassword/${oldUser.id}/${token}`
+        var transporter = nodemailer.createTransport({
+            host: 'smtp.ethereal.email',
+            port: 587,
+            auth: {
+                user: 'carmen.hermann@ethereal.email',
+                pass: 'wKKqTFc4MSmmuA4g2a'
+            }
+          });
+          
+          var mailOptions = {
+            from: 'souvik8972@gmail.com',
+            to: 'souvik8582@gmail.com',
+            subject: 'Sending Email using Node.js',
+            text: link,
+          };
+          
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          })
         console.log(link)
 
        res.send(link)

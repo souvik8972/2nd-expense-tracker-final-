@@ -6,27 +6,33 @@ const sequelize=require("./util/db")
 const User=require("./model/userDb")
 const Expense=require("./model/expenseDb")
 const Order=require("./model/orders")
+const bodyParser = require('body-parser')
 //
 const homeRoute=require("./routes/home")
 const userRoute=require("./routes/user")
 const dashboardRoute=require("./routes/dashboard")
 const primemembership=require("./routes/purchase")
+const passwordRoute=require("./routes/forgotPassword")
 const premiumFeature=require("./routes/premiumFeature")
-const password=require("./routes/password")
+
 
 //
+
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, "public")))
-app.use(express.json())
-app.use(express.urlencoded({extended: true}));
+
 app.use(cors());
 ///
 
 app.use(homeRoute)
 app.use(userRoute)
 app.use(dashboardRoute )
+app.use(passwordRoute)
 app.use(primemembership)
 app.use("/premium",premiumFeature)
-app.use(password)
+
 
 
 //hasmany relations
