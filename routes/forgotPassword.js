@@ -59,7 +59,7 @@ route.post("/forgot-password",async(req,res)=>{
           })
         console.log(link)
 
-       res.send(link)
+       res.status(200).send(link)
 
 
     } catch (error) {
@@ -74,11 +74,34 @@ route.post("/forgot-password",async(req,res)=>{
 
 )
 
-route.get("/resetpassword/:id/:token",(req,res)=>{
-    res.sendFile("changepassword.html",{root:"views"})
 
-})
 
+route.get("/resetpassword/:id/:token", async (req, res) => {
+  const { id, token } = req.params;
+  try {
+    const oldUser = await User.findOne({
+      where: {
+        id
+      }
+    });
+
+    if (!oldUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    try {
+      console.log(req.body.password)
+      const verify =  jwt.verify(token, secret);
+
+      res.status(200).sendFile("changepassword.html",{root:"views"})
+     
+    } catch (tokenError) {
+      return res.status(401).json({ message: "Token verification failed" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 route.post("/resetpassword/:id/:token", async (req, res) => {
     const { id, token } = req.params;
@@ -99,7 +122,7 @@ route.post("/resetpassword/:id/:token", async (req, res) => {
        
   
        const password=req.body.password
-       const confirmPassword=req.body.confirmPasswordpassword
+       const confirmPassword=req.body.confirmPassword
         
   
         if (password !== confirmPassword) {
@@ -128,50 +151,6 @@ route.post("/resetpassword/:id/:token", async (req, res) => {
     }
   });
   
-
-
-
-// route.post('/reset-password/:id',async (req,res)=>{
-
-//  const id = req.params.id
-// const password = req.body.password;
-// const confirmPassword=req.body.confirmPassword
-
-
-// try {
-//     if(confirmPassword!==password) {
-//         res.status(500).json({"message": "passwords do not match"})
-//     }
-//     console.log(password)
-//     const hashpasswords=await bcrypt.hash(password,10)
-//     const upadtedPassword =await User.update({
-//         password:hashpasswords
-//     },{
-//         where:{
-//             id:id
-//         }
-//     }
-//     )
-//     res.status(200).json({"message":"upadted password"})
-    
-// } catch (error) {
-//     console.log(error)
-//     res.send(error)
-    
-// }
-
-
-
-
-// })
-// route.post("/reset-password/:id",(req,res)=>{
-//     const id = req.params.id
-// const password = req.body.password;
-// const confirmPassword=req.body.confirmPassword
-// console.log(id,password,confirmPassword)
-
-// })
-
 
 
 
