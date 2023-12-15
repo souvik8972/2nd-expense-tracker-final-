@@ -31,7 +31,7 @@ route.post("/forgot-password",async(req,res)=>{
         if (!oldUser){
             return res.status(404).json({"message": "User not found"})
         }
-        console.log(oldUser.email)
+   
         const token=jwt.sign({email:oldUser.email ,id:oldUser.id},secret,{expiresIn:"10m"})
         const link=`http://localhost:8080/resetpassword/${oldUser.id}/${token}`
         var transporter = nodemailer.createTransport({
@@ -47,6 +47,7 @@ route.post("/forgot-password",async(req,res)=>{
             from: 'souvik8582@gmail.com',
             to: oldUser.email,
             subject: 'Sending Email using Node.js',
+            
             text: link,
           };
           
