@@ -6,6 +6,7 @@ const sequelize=require("./util/db")
 const User=require("./model/userDb")
 const Expense=require("./model/expenseDb")
 const Order=require("./model/orders")
+const Forgotpassword=require("./model/forgotpasswordDb")
 const bodyParser = require('body-parser')
 //
 const homeRoute=require("./routes/home")
@@ -43,6 +44,8 @@ Expense.belongsTo(User,
 User.hasMany(Order)
 Order.belongsTo(User)
 
+User.hasMany(Forgotpassword);
+Forgotpassword.belongsTo(User);
 
 sequelize.sync().then(()=>{
     app.listen(8080, ()=>{
