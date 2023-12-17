@@ -1,28 +1,5 @@
 
 
-// function authentication() {
-//   const tokenData = JSON.parse(localStorage.getItem('token'));
-//    console.log(tokenData)
-//   if (tokenData) {
-//     const { token } = tokenData;
-  
-
-//     // Return the authenticated axios instance
-// const authaxis= axios.create({
-//       baseURL: 'http://localhost:8080',
-//       headers: {
-//          'Authorization': `${token}`,
-//       //   'Authorization': `Bearer ${token}`,
-//         'userName': `souvik`
-//       }
-     
-//     })
-// return authaxis;
-//   } else {
-//     alert("please Log in frist");
-//     window.location.href = "http://localhost:8080/login";
-//   }
-// }
 function authentication() {
    const tokenData = JSON.parse(localStorage.getItem('token'));
    console.log('Token Data:', tokenData);
@@ -279,3 +256,12 @@ leaderboardTableBody.appendChild(row)
       console.log(error)
 
 }}
+const togglebtn=document.getElementById("toggle")
+const body=document.body
+const nav =document.querySelector(".nav")
+
+togglebtn.addEventListener("click",()=>{
+  togglebtn.classList.toggle("ri-xrp-fill")
+ nav.classList.toggle("active")
+    
+})

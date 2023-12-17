@@ -1,205 +1,739 @@
 *{
-    margin :0;
-    padding: 0;
-   
+    margin:0;
+    padding:0;
+}
 
- 
-}
-.main {
-    width:100%;
-    height: 100vh;
-  
-}
-.main nav{
-    width: 100%;
-    height: 10vh;
+nav{
    
-  
+    color: blue;
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid black;
-}
-.main nav h1{
-    width: 20vw;
-    color: blue;
-
-    text-align: center;
-   padding: 3.6vh;
-}
-.main nav .option {
-   display: flex;
-   width: 100%;
-   justify-content: space-between;
- 
-}
-.main nav .option  .left ul{
-    display: flex;
     align-items: center;
-    justify-content: center;
-  justify-content: space-around;
-    width: 31vw;
-    height: 10vh;
-    list-style:none ;
-    text-decoration: none;
-   
-}
-.main nav .option  .left ul li{
- 
-    padding:1vh;
-   
-}
-.left ul li a, .right ul li a{
-    text-decoration: none;
+    height: 8vh;
+    box-shadow: rgb(0, 0, 247) 0px 5px, rgba(43, 38, 180, 0.636) 0px 10px, rgba(79, 83, 188, 0.464) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+
 }
 
-.right ul{
+
+.nav .middle{
     display: flex;
-    align-items: center;
-    justify-content: center;
-  justify-content:end;
-    width: 31vw;
-    height: 10vh;
-    list-style:none ;
-    gap:2vw;
-    margin-right: 3vw;
-    list-style: none;
-   
-}
-.right ul li{  
-   transform: none;
-    padding:1vh;
-}
-.main .addExpenseForm{
-    display: flex;
-    
-    width: 100%;
-    height: 50vh;
-   
-    text-align: center;
-}
-.main .addExpenseForm .img,.img2{
-   
-    width: 33.3%;
+    width:50%;
     height: 100%;
+   
+   justify-content: space-between;
+  
+   justify-content: center;
+   align-items: center;
+   justify-content: flex-start;
+   margin-left: 2vh;
 }
-.main .addExpenseForm .form{
+.nav .right{
+    display: flex;
+    width: 30%;
+    height: 100%;
+
+    
+    justify-content: space-between;
+  
+}
+.nav .right ul{
+    width: 100%;
+  
+
+    
+}
+.header{
+    display: none;
+}
+#toggle{
+    display: none;
+    
+}
+
+li{
+    list-style: none;
+    color: blue;
+    
+}
+li a{
+   color: blue;
+   text-decoration: none;
+}
+.nav .middle h1{
+
+    width: 30%;
+    text-align: left;
+}
+.nav .middle ul{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+  
+    align-items: center;
+}
+
+    
+.nav .right ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.nav .right ul{
+    align-items: center;
+}
+
+
+.middle ul li a{
+    padding: 5px;
+    cursor: pointer;
+    color: blue;
+    border-radius: 10px;
+    background: #1313d1;
+      border-radius: 999px;
+      box-shadow: #1010e4 0 10px 20px -10px;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      cursor: pointer;
+      font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 16px;
+      opacity: 1;
+      outline: 0 solid transparent;
+      padding: 8px 18px;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      width: fit-content;
+      word-break: break-word;
+      border: 0;
+}
+.right ul li button{
+    padding: 5px;
+    cursor: pointer;
+    color: blue;
+    border-radius: 10px;
+    background: #1313d1;
+      border-radius: 999px;
+      box-shadow: #1010e4 0 10px 20px -10px;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      cursor: pointer;
+      font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 16px;
+      opacity: 1;
+      outline: 0 solid transparent;
+      padding: 8px 18px;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      width: fit-content;
+      word-break: break-word;
+      border: 0;
+      
+}
+
+
+.right ul li button:hover,.middle ul li a:hover{
+    background-color: rgb(253, 253, 253);
+    color: blue;
+}
+
+.hero{
     display: flex;
     flex-direction: column;
-    width: 33.3%;
 }
-.main .addExpenseForm .form form {
-    width: 90%;
-    margin: 1vw 1.5vw;
-    gap:10px;
+.hero .addExpenseForm{
+    margin-top: 2vh;
+    margin-bottom: 4vh;
+    height: 50vh;
+}
+#form1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(4, 12, 255);
+    background-color: rgba(20, 20, 255, 0.526);
+   padding: 1vh;
+   background-image: url("./img/full.png");
+   background-position:30%;
+   
+   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+   backdrop-filter: blur( 20px );
+   -webkit-backdrop-filter: blur( 20px );
+   border-radius: 10px;
+   border: 1px solid rgba( 255, 255, 255, 0.18 );
+   box-shadow: rgb(0, 0, 247) 0px 5px, rgba(43, 38, 180, 0.636) 0px 10px, rgba(79, 83, 188, 0.464) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+  
+  height: 60vh;
+ 
+   
+}
+#form1 h1{
+  width: 350px;
+  text-align: center;
+  height: 50px;
+   background: rgba( 213, 213, 216, 0 );
+   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+   backdrop-filter: blur( 20px );
+   -webkit-backdrop-filter: blur( 20px );
+   border-radius: 10px;
+   border: 1px solid rgba( 255, 255, 255, 0.18 );
+   margin-top: 20px;
+   background-color: #1313d1;
+   color:#FFFFFF;
+    
+}
+#form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(1, 1, 253);
+    background-color: rgba(20, 20, 255, 0.526);
+   padding: 1vh;
+  
+   backface-visibility: visible;
+  
+  height: 4vh;
+ 
+    
+}
+#form1 .form{
+    background-color: rgb(255, 5, 5);
+    margin-top: 20px;
+    background-position: top;
+    width: 350px;
+    height: 40vh;
+    background: rgba( 213, 213, 216, 0 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 20px );
+-webkit-backdrop-filter: blur( 20px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+
+#form1 .form select,#form1 .form input{
+    width: 80%;
+    height: 30px;
+    text-align: center;
+    background: rgba( 213, 213, 216, 0 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 20px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    /* /* margin-top:10px; */
+   margin-bottom: 10px; 
+}
+
+#form1 .form{
+    font-size: 20px;
+    font-weight: 900;
+}
+#form1 .form button {
+    width: 100px;
+    padding: 3px;
+   
+      background: #1313d1;
+      border-radius: 999px;
+      box-shadow: #1010e4 0 10px 20px -10px;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      cursor: pointer;
+      font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24px;
+      opacity: 1;
+      outline: 0 solid transparent;
+      padding: 8px 18px;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      width: fit-content;
+      word-break: break-word;
+      border: 0;
+      margin-top: 20px;
   
    
 }
- .form input {
-    
-   height: 3vh;
-   margin-bottom: 10px;
-}
-.form button{
-    
-    width: 7vw;
-    height: 5vh;
-    margin-left: 12vw;
-    background-color: blue;
-    color: white;
-    border-radius: 5%;
-}
-.form button:hover{
-    background-color: rgba(0, 0, 255, 0.568);
-}
-.form  input,option{
-    text-align: center;
-    color: blue;
-}
-.form #options{
-    height: 3vh;
-    color: blue;
-
-}
-.form h1{
-    color: blue;
-}
-.addExpenseForm {
-    overflow: hidden;
-}
-.addExpenseForm .img2 img{
-    
-    width: 100%;
+.styled-table{
+    background-color: #1313d1;
+  width: 100%;
     height: 100%;
-}
-.addExpenseForm .img img{
-    width: 100%;
-    height: 100%;
-
-}
-.addExpenseForm .form{
-    
-    color: blue;
-    background: transparent;
-}
-
-
-.styled-table  h2{
     text-align: center;
-    margin-bottom: 2vh;
+    margin-top: 30px;
+    color: #FFFFFF;
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: column;
 }
 
-.styled-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    
-    
-   background: #ffffffd5;
-   border: 1px solid black;
-   
-    
-   margin: 0 14%;
-   margin-top: 11vh;
-   padding-bottom:2vh ;
-}
 .styled-table table{
-    margin:0 15%;
-}
+    width: 100%;
+ background: url("./img/left.jpg");
 
-.styled-table thead tr {
-    background-color: blue;
-    color: #ffffff;
-    text-align: left;
-
+ 
+   
     
+}
+#total{
+    text-align: center;
+    left:60px;
+}
+.styled-table table thead,.styled-table table tbody{
+    margin-bottom: 20px;
+    font-size: 10px;
+    display: inline;
+    justify-content: space-between;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    background: rgba( 213, 213, 216, 0 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 20px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+   width:100%;
+   color: rgb(23, 9, 180);
+
    
 }
-.styled-table th,
-.styled-table td {
-    padding: 1px 67px;
-    white-space: nowrap;
+.styled-table table tbody  tr{
+   border-radius: 10px;
+   border-bottom:1px solid rgb(248, 248, 253)
+}
+.styled-table table tbody  tr td,.styled-table table thead th{
+width: 500px;;
+   font-size: 15px;
+  
+ padding: 5px 20px;
+}.styled-table table thead th{
+    border-left: 0.5px solid blue;
+}
+
+.styled-table table tbody td:nth-child(3 ),.styled-table table tbody td:nth-child(4 ){
+   position: relative;
+   left:38px;
+
+}
+.styled-table table tbody td:nth-child(2 ){
+    position: relative;
+    left:25px;
+}
+.styled-table table tbody td button {
+    background: #1313d1;
+    border-radius: 999px;
+    box-shadow: #1010e4 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 12px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+  
+
+}
+
+#total{
+    background-color: #1010e4;
+    text-align: center;
+    color:white;
+    background: #1313d1;
+    border-radius: 999px;
+    box-shadow: #1010e4 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 12px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+   position: relative;
+   left: 38%;
+   margin-top: 10px;
+   margin-bottom: 50px;
+}
+
+.activeLeaderboard{
+    display: block;
+}
+@media only screen and (max-width: 600px){
+    .header{
+        display: block;
+        padding: 10px 20px;
+        height: 50px;
+      
+      color: #1010e4;
+       box-shadow: rgb(0, 0, 247) 0px 5px, rgba(43, 38, 180, 0.636) 0px 10px, rgba(79, 83, 188, 0.464) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+    }
     
-}
-.styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-}
-.styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
-}
-.right ul li button{
-    background-color: #ffffff;
-    border: none;
-}
-#leaderboard,#report{
+    i{
+        display: inline;
+        z-index: 6;
+        font-size: 100;
+        
+    }
+    nav{
+        width: 100%;
+        height: 500px;
+      flex-direction: column;
+      background: rgba( 7, 10, 233, 0.1 );
+      background: rgba( 213, 213, 216, 0.55 );
+      box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+      backdrop-filter: blur( 11px );
+      -webkit-backdrop-filter: blur( 11px );
+      border-radius: 10px;
+      border: 1px solid rgba( 255, 255, 255, 0.18 );
+      overflow: hidden;
+      
+      
+    }
+    nav .middle {
+       
+        flex-direction: column;
+       
+       
+    } 
+nav .middle h1{
     display: none;
 }
+    nav .right{ 
+        flex-direction: column;
+        
+        position: absolute;
+        top:255px;
+        left:37%;
+        text-align: center;
+        gap:70px;
+    }
+    nav .middle{
+        position: absolute;
+        left:23%;
+    }
+    nav .middle ul {
+        flex-direction: column;
+    
+        margin-top: 50px;
+        width: 100px;
+        gap:30px;
+        
+    }
+    nav .middle h1{
+        width: 800px;
+        position: absolute;
+        background-color: blue;
+        left:10px;
+    }
+    nav .middle ul li{
+        background-color: blue;
+        width: 200px;
+        z-index: 3;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    nav .right ul{
+        flex-direction: column;
+        gap:30px;
+    }
+    nav .right ul li{
+        width: 200px;
+        background-color: blue;
+        color: #FFFFFF;
+    }
+    
+    nav .right ul li,nav .middle ul li{
+        padding:10px;
+        color: #FFFFFF;
+    }
+    nav .right ul li a,nav .middle ul li a{
+        padding:10px;
+        color: #FFFFFF;
+    }
+
+    nav .right .middle{
+        display: none;
+    }
+
+.nav{
+    display: none;
+}
+.active{
+    display:block;
+}
+ul li{
+    border-radius: 25px;
+}
+
+.right ul li:nth-child(3){
+    border-radius: 10px;
+   
+    background-color: transparent;
+    
+}
+.hero{
+    display: flex;
+    flex-direction: column;
+}
+.hero .addExpenseForm{
+    margin-top: 2vh;
+    margin-bottom: 4vh;
+    height: 50vh;
+}
+#form1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(4, 12, 255);
+    background-color: rgba(20, 20, 255, 0.526);
+   padding: 1vh;
+   background-image: url("./img/right.jpg");
+   
+   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+   backdrop-filter: blur( 20px );
+   -webkit-backdrop-filter: blur( 20px );
+   border-radius: 10px;
+   border: 1px solid rgba( 255, 255, 255, 0.18 );
+  
+  height: 49vh;
+ 
+   
+}
+#form1 h1{
+  width: 100%;
+  text-align: center;
+  height: 50px;
+   background: rgba( 213, 213, 216, 0 );
+   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+   backdrop-filter: blur( 20px );
+   -webkit-backdrop-filter: blur( 20px );
+   border-radius: 10px;
+   border: 1px solid rgba( 255, 255, 255, 0.18 );
+   margin-top: 20px;
+   color: #1010e4;
+   text-shadow: 2px 5px 10px#fdfdfd ;
+    
+}
+#form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(1, 1, 253);
+    background-color: rgba(20, 20, 255, 0.526);
+   padding: 1vh;
+  
+   backface-visibility: visible;
+  
+  height: 49vh;
+ 
+    
+}
+#form1 .form{
+    background-color: rgb(255, 5, 5);
+    margin-top: 20px;
+    background-position: top;
+    width: 350px;
+    height: 40vh;
+    background: rgba( 213, 213, 216, 0 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 20px );
+-webkit-backdrop-filter: blur( 20px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+
+#form1 .form select,#form1 .form input{
+    width: 80%;
+    height: 30px;
+    text-align: center;
+    background: rgba( 213, 213, 216, 0 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 20px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    /* /* margin-top:10px; */
+   margin-bottom: 10px; 
+}
+
+#form1 .form{
+    font-size: 20px;
+    font-weight: 900;
+}
+#form1 .form button {
+    width: 100px;
+    padding: 3px;
+   
+      background: #1313d1;
+      border-radius: 999px;
+      box-shadow: #1010e4 0 10px 20px -10px;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      cursor: pointer;
+      font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24px;
+      opacity: 1;
+      outline: 0 solid transparent;
+      padding: 8px 18px;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      width: fit-content;
+      word-break: break-word;
+      border: 0;
+      margin-top: 20px;
+  
+   
+}
+.styled-table{
+    background-color: #1313d1;
+  
+    height: 100%;
+    text-align: center;
+    margin-top: 30px;
+    color: #FFFFFF;
+    overflow-x: scroll;
+}
+
+.styled-table table{
+    
+    padding: 30px 40px;
+    background-image: url("./img/left.jpg");
+}
+.styled-table table thead,.styled-table table tbody{
+    margin-bottom: 20px;
+    font-size: 10px;
+    display: inline;
+    justify-content: space-between;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    background: rgba( 213, 213, 216, 0 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 20px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+   width:600px;
+   color: rgb(23, 9, 180);
+
+   
+}
+.styled-table table tbody  tr{
+   border-radius: 10px;
+   border-bottom:1px solid blue
+}
+.styled-table table tbody  tr td,.styled-table table thead th{
+width: 500px;;
+   font-size: 15px;
+  
+ padding: 5px 20px;
+}.styled-table table thead th{
+    border-left: 0.5px solid blue;
+}
+
+.styled-table table tbody td:nth-child(3 ),.styled-table table tbody td:nth-child(4 ){
+   position: relative;
+   left:38px;
+
+}
+.styled-table table tbody td:nth-child(2 ){
+    position: relative;
+    left:25px;
+}
+.styled-table table tbody td button {
+    background: #1313d1;
+    border-radius: 999px;
+    box-shadow: #1010e4 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 12px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+  
+
+}
+
+#total{
+    background-color: #1010e4;
+    text-align: center;
+    color:white;
+    background: #1313d1;
+    border-radius: 999px;
+    box-shadow: #1010e4 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 12px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+   position: relative;
+   left: 38%;
+   margin-top: 10px;
+   margin-bottom: 40px;
+}
+#toggle{
+    display: inline;
+    font-size: 30px;
+    position: absolute;
+    top:15px;
+    right:15px;
+}
+#leaderboard1 {
+    
+    text-align: center;
+    
+}
+
+}
+

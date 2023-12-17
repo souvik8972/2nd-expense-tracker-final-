@@ -27,9 +27,10 @@
                     Sign Up
                 </a>
                 <a href="/login" class="signin">Sign in</a>
-                <i class="ri-menu-3-fill"></i>
+               
                 
             </div>
+            <i class="ri-menu-3-fill" id="toggle"></i>
         </nav>
   
 <div class="hero">
@@ -60,6 +61,7 @@
 
 
 
+
     </div>
     
 
@@ -67,6 +69,17 @@
 
 
 </body>
+<script>
+    const togglebtn=document.getElementById("toggle")
+const body=document.body
+const option=document.getElementsByClassName("option")[0];
+togglebtn.addEventListener("click",()=>{
+  togglebtn.classList.toggle("ri-xrp-fill")
+ 
+    option.classList.toggle("active");
+})
+
+</script>
 
 
 </html>
