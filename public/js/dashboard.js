@@ -43,9 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("rzp-button1").style.display="none"
   document.getElementById("massage").innerHTML="Prime member"
   showLeaderboard()
-  report()
-  
-
+//   showLeaderboard()
  }
  
   // Call authentication and use the returned axios instance
@@ -196,7 +194,7 @@ const  rz1=document.getElementById("rzp-button1").onclick = async function (e) {
                    
                    document.getElementById("massage").innerHTML="Prime member"
                   localStorage.setItem("token",JSON.stringify(res.data.token))
-                  
+                  authentication()
                   
                   window.location.href="http://localhost:8080/dashboard"
 
@@ -258,10 +256,6 @@ leaderboardTableBody.appendChild(row)
       console.log(error)
 
 }}
-
-
-
-
 const togglebtn=document.getElementById("toggle")
 const body=document.body
 const nav =document.querySelector(".nav")
@@ -271,61 +265,3 @@ togglebtn.addEventListener("click",()=>{
  nav.classList.toggle("active")
     
 })
-
-
-
-function report(){
-const repotbtn = document.getElementById("report");
-
-repotbtn.addEventListener("click", async () => {
-   try {
-      const authenticatedAxios = authentication();
-      const response = await authenticatedAxios.get("premium/report");
-      console.log(response.data);
-      window.location.href='http://localhost:8080/premium/repor'
-      // Handle the response or redirect to the report page
-   } catch (error) {
-      console.error("Error fetching report:", error);
-   }
-});
-}
-async function getExpenseReport() {
-   const yearInput = document.getElementById('year');
-   const year = yearInput.value;
-   console.log(year)
-
-   if (!year) {
-       alert('Please enter a year');
-       return;
-   }
-
-   try {
-       const response = await authenticatedAxios.get(`/premium/report?year=${year}`);
-       console.log(response.data)
-       displayReport(response.data);
-   } catch (error) {
-       console.error('Error fetching expense report:', error);
-       alert('Error fetching expense report. Please check the console for details.');
-   }
-}
-
-
-
-function displayReport(data) {
-   const reportResult = document.getElementById('reportResult');
-   reportResult.innerHTML = '';
-
-   if (data.length === 0) {
-       reportResult.innerHTML = 'No expenses found for the specified year.';
-       return;
-   }
-
-   const ul = document.createElement('ul');
-   data.forEach(expense => {
-       const li = document.createElement('li');
-       li.textContent = `Category: ${expense.category}, Amount: ${expense.amount}, Date: ${expense.date}`;
-       ul.appendChild(li);
-   });
-
-   reportResult.appendChild(ul);
-}
