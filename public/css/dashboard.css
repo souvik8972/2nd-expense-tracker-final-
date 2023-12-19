@@ -307,10 +307,12 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .styled-table table tbody  tr{
    border-radius: 10px;
-   border-bottom:1px solid rgb(248, 248, 253)
+   border-bottom:1px solid rgb(248, 248, 253);
+   margin-left:150px ;
+
 }
 .styled-table table tbody  tr td,.styled-table table thead th{
-width: 500px;;
+width: 400px;;
    font-size: 15px;
   
  padding: 5px 20px;
@@ -320,7 +322,21 @@ width: 500px;;
 
 .styled-table table tbody td:nth-child(3 ),.styled-table table tbody td:nth-child(4 ){
    position: relative;
-   left:38px;
+   left:140px;
+
+}
+.styled-table table tbody td:nth-child(1){
+    position: relative;
+    right: 60px; 
+}
+.styled-table table tbody td:nth-child(4 ){
+    position: relative;
+    left:180px;
+
+}
+.styled-table table tbody td:nth-child(5 ){
+    position: relative;
+    left:1px;
 
 }
 .styled-table table tbody td:nth-child(2 ){
@@ -383,6 +399,7 @@ width: 500px;;
 .activeLeaderboard{
     display: block;
 }
+
 @media only screen and (max-width: 600px){
     .header{
         display: block;
