@@ -1,7 +1,10 @@
+const Expenses = require("../model/expenseDb");
 const Expense = require("../model/expenseDb");
 
 const User = require("../model/userDb");
 const sequelize = require("../util/db");
+const AWS=require("aws-sdk")
+require ("dotenv").config()
 
 //get dashboard
 exports.getDashboard = (req, res) => {
@@ -104,3 +107,57 @@ exports.deleteExpenses = async (req, res) => {
     res.status(500).json({ success: false, message: "Error deleting expense" });
   }
 };
+
+exports.downloadexpense=async(req,res)=>{
+
+try {
+  
+  const expenses= await req.user.getExpenses()
+  console.log(expenses)
+  const  stringify= JSON.stringify(expenses)
+  const filename="Expenses.txt"
+  const fileURL= await uploadToS3(stringify,filename)
+  console.log(fileURL)
+  res.status(200).json({fileURL,success:true})
+  
+} catch (error) {
+  console.log(error)
+  
+}
+
+
+}
+
+
+function uploadToS3(data, filename) {
+  return new Promise((resolve, reject) => {
+    const BUCKET_NAME = process.env.BUCKET_NAME
+    const IAM_USER_KEY = process.env.IAM_USER_KEY
+    const IAM_USER_SECRET = process.env.IAM_USER_SECRET
+
+    let s3bucket = new AWS.S3({
+      accessKeyId: IAM_USER_KEY,
+      secretAccessKey: IAM_USER_SECRET,
+    });
+
+    s3bucket.createBucket(() => {
+      var params = {
+        Bucket: BUCKET_NAME,
+        Key: filename,
+        Body: data,
+      };
+
+      s3bucket.upload(params, (err, s3response) => {
+        if (err) {
+          console.log(err);
+          console.log(process.env.IAM_USER_KEY)
+          reject(err);
+        } else {
+          console.log("Success", s3response);
+          // Resolve with the file URL
+          resolve(s3response.Location);
+        }
+      });
+    });
+  });
+}

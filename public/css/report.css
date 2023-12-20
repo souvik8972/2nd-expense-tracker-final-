@@ -1,0 +1,399 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+nav{
+   
+    color: blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8vh;
+    box-shadow: rgb(0, 0, 247) 0px 5px, rgba(43, 38, 180, 0.636) 0px 10px, rgba(79, 83, 188, 0.464) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+
+}
+
+
+.nav .middle{
+    display: flex;
+    width:50%;
+    height: 100%;
+   
+   justify-content: space-between;
+  
+   justify-content: center;
+   align-items: center;
+   justify-content: flex-start;
+   margin-left: 2vh;
+}
+.nav .right{
+    display: flex;
+    width: 30%;
+    height: 100%;
+
+    
+    justify-content: space-between;
+  
+}
+.nav .right ul{
+    width: 100%;
+  
+
+    
+}
+.header{
+    display: none;
+}
+#toggle{
+    display: none;
+    
+}
+
+li{
+    list-style: none;
+    color: blue;
+    
+}
+li a{
+   color: blue;
+   text-decoration: none;
+}
+.nav .middle h1{
+
+    width: 30%;
+    text-align: left;
+}
+.nav .middle ul{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+  
+    align-items: center;
+}
+
+    
+.nav .right ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.nav .right ul{
+    align-items: center;
+}
+
+
+.right ul li button{
+    padding: 5px;
+    cursor: pointer;
+    color: blue;
+    border-radius: 10px;
+    background: #1313d1;
+      border-radius: 999px;
+      box-shadow: #1010e4 0 10px 20px -10px;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      cursor: pointer;
+      font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 16px;
+      opacity: 1;
+      outline: 0 solid transparent;
+      padding: 8px 18px;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      width: fit-content;
+      word-break: break-word;
+      border: 0;
+      
+}
+
+
+.right ul li button:hover{
+    background-color: rgb(253, 253, 253);
+    color: blue;
+}
+
+
+#leaderboard1{
+    margin: 10%;
+
+    padding: auto;
+    width: 50vh;
+    height: 60vh;
+    
+    text-align: center;
+    border-radius: 20px;
+    border: 2px solid rgba(37, 37, 225, 0.452);
+    background-color: #3535c9a4;
+
+
+}
+#leaderboard1 h2{
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    color: blue;
+    border-radius: 20px 20px 0 0;
+  
+   
+}
+#leaderboard1 table {
+  margin-top:10px;
+    width: 90%;
+    margin: auto;
+    height: 100px;
+    overflow: scroll;
+
+}
+#leaderboard1 table tr th,
+#leaderboard1 table tr td{
+    border: 2px solid rgb(253, 253, 253);
+    border-radius: 10px;
+    color:#1100fc;
+    background-color: #ffffff;
+}
+body{
+    background: url("./left.jpg");
+    background-position: bottom left;
+   
+    
+}
+
+
+
+.Month_table,.yearly_table{
+    width: 80vh;
+   min-height: 30vh;
+   max-height: 60vh;
+position: relative;
+   background-color: transparent;
+   margin: auto;
+   margin-top: 10vh;
+   text-align: center;
+   border-radius: 3vh;
+   overflow-y: scroll;
+   overflow-x: hidden;
+}
+.Month_table::-webkit-scrollbar,.yearly_table::-webkit-scrollbar{
+    display: none;
+}
+.body::-webkit-scrollbar{
+    display: none;
+}
+.Month_table #table,.yearly_table #table{
+    background-color: rgb(200, 191, 239);
+    width: 90%;
+    margin: auto;
+    border-radius: 3vh;
+   margin-bottom: 3vh;
+  
+    overflow: scroll;
+
+     position: relative;
+}
+.Month_table #table thead th,.yearly_table #table thead th{
+    background-color: #1100fc;
+    color: #ffffff;
+    border-radius: 10vh;
+
+}
+
+
+.Month_table #table thead tr th, .yearly_table #table thead tr th{
+    background-color: #1100fc;
+    color: #ffffff;
+    border-radius: 10vh;
+
+}
+.Month_table h1,.yearly_table h1{
+    color: white;
+    margin-bottom: 1vh;
+    background-color: #1313d1;
+    border-radius: 0 3vh;
+    position: sticky;
+   
+    width: 100%;
+}
+
+
+ .total,.h{
+   
+    font-size: 2vh;
+   text-transform: uppercase;
+    background-color: #1100fc;
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    padding: 1vh;
+    border-radius: 0 0px 20px 20px;
+    color: #FFFFFF;
+    box-shadow: 2px 2px 2px black ;
+    
+}
+
+.h{
+    margin-top: 5vh;
+    margin-bottom: -8vh;
+    border-radius: 20px;
+}
+
+
+
+
+
+.download{
+    background-color: #1313d1;
+    width: 10vh;
+    padding: 10px;
+    color: #FFFFFF;
+    border-radius: 20px;
+    text-align: center;
+    position: fixed;
+    right:30px;
+    bottom:30px;
+    box-shadow: 2px 2px 2px black ;
+    
+
+}
+.download:hover{
+    background-color: #ffffff;
+    color: #1100fc;
+    box-shadow: 2px 2px 2px black ;
+}
+
+
+
+
+
+@media only screen and (max-width: 600px){
+    .header{
+        display: block;
+        padding: 10px 20px;
+        height: 50px;
+      
+      color: #1010e4;
+       box-shadow: rgb(0, 0, 247) 0px 5px, rgba(43, 38, 180, 0.636) 0px 10px, rgba(79, 83, 188, 0.464) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+    }
+    
+    i{
+        display: inline;
+        z-index: 6;
+        font-size: 100;
+        
+    }
+    nav{
+        width: 100%;
+        height: 500px;
+      flex-direction: column;
+      background: rgba( 7, 10, 233, 0.1 );
+      background: rgba( 213, 213, 216, 0.55 );
+      box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+      backdrop-filter: blur( 11px );
+      -webkit-backdrop-filter: blur( 11px );
+      border-radius: 10px;
+      border: 1px solid rgba( 255, 255, 255, 0.18 );
+      overflow: hidden;
+      
+      
+    }
+    nav .middle {
+       
+        flex-direction: column;
+       
+       
+    } 
+nav .middle h1{
+    display: none;
+}
+    nav .right{ 
+        flex-direction: column;
+        
+        position: absolute;
+        top:255px;
+        left:37%;
+        text-align: center;
+        gap:70px;
+    }
+    nav .middle{
+        position: absolute;
+        left:23%;
+    }
+    nav .middle ul {
+        flex-direction: column;
+    
+        margin-top: 50px;
+        width: 100px;
+        gap:30px;
+        
+    }
+    nav .middle h1{
+        width: 800px;
+        position: absolute;
+        background-color: blue;
+        left:10px;
+    }
+    nav .middle ul li{
+        background-color: blue;
+        width: 200px;
+        z-index: 3;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    nav .right ul{
+        flex-direction: column;
+        gap:30px;
+    }
+    nav .right ul li{
+        width: 200px;
+        background-color: blue;
+        color: #FFFFFF;
+    }
+    
+    nav .right ul li,nav .middle ul li{
+        padding:10px;
+        color: #FFFFFF;
+    }
+    nav .right ul li a,nav .middle ul li a{
+        padding:10px;
+        color: #FFFFFF;
+    }
+
+    nav .right .middle{
+        display: none;
+    }
+
+.nav{
+    display: none;
+}
+.active{
+    display:block;
+}
+ul li{
+    border-radius: 25px;
+}
+
+.right ul li:nth-child(3){
+    border-radius: 10px;
+   
+    background-color: transparent;
+    
+}
+
+#toggle{
+    display: inline;
+    font-size: 30px;
+    position: absolute;
+    top:15px;
+    right:15px;
+}
+#leaderboard1 {
+    width: 100px;
+    text-align: center;
+    display: none;
+}
+
+}
+

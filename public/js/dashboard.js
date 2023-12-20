@@ -8,11 +8,11 @@ function authentication() {
       const { token } = tokenData;
 
       // Return the authenticated axios instance
-      const authaxis = axios.create({
+      const authaxis =  axios.create({
          baseURL: 'http://localhost:8080',
          headers: {
             'Authorization': `Bearer ${token}`,
-            'userName': 'souvik',
+            
          },
       });
 
@@ -23,7 +23,7 @@ function authentication() {
    }
 }
 
-
+////////////////////////////////////////////////////////////////
 const authenticatedAxios = authentication();
 const expenseForm = document.getElementById("form");
 expenseForm.addEventListener("submit", addExpense);
@@ -42,12 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
  if(check.ispremiumuser){
     document.getElementById("rzp-button1").style.display="none"
   document.getElementById("massage").innerHTML="Prime member"
-  showLeaderboard()
-//   showLeaderboard()
+
  }
  
-  // Call authentication and use the returned axios instance
- 
+  
   
   fetchExpenses();
 
@@ -186,17 +184,18 @@ const  rz1=document.getElementById("rzp-button1").onclick = async function (e) {
                        order_id: options.order_id,
                        payment_id: response.razorpay_payment_id,
                    });
-                   const  rz1=document.getElementById("rzp-button1").innerText="prime member"
-                   rz1.disabled = true
+                   
+                   localStorage.setItem("token",JSON.stringify(res.data.token))
+                   
                   
                    alert("Congratulations You are now Premium member please login")
                    document.getElementById("rzp-button1").style.display="none"
                    
                    document.getElementById("massage").innerHTML="Prime member"
-                  localStorage.setItem("token",JSON.stringify(res.data.token))
-                  authentication()
+                 
+                 
                   
-                  window.location.href="http://localhost:8080/dashboard"
+             
 
 
                    
@@ -232,8 +231,9 @@ leaderboardBtn.addEventListener("click",showingLeaderboard)
 async function showingLeaderboard(){
 
    try {
-      
-      const response=await authenticatedAxios.get("premium/leaderboard")
+      const toke=localStorage.getItem('token');
+      const check =parseJwt(toke)
+      if(check.ispremiumuser) { const response=await authenticatedAxios.get("premium/leaderboard")
       const data=response.data
 console.log(data)
 const leaderboardTableBody=document.getElementById("leaderboardTableBody")
@@ -247,10 +247,15 @@ row.innerHTML=`
 
 
 `;
-leaderboardTableBody.appendChild(row)
+leaderboardTableBody.appendChild(row)   })}
+else(
+   alert("please buy a subscription")
+)
+      
+     
 
 
-      })
+   
       
    } catch (error) {
       console.log(error)
@@ -265,3 +270,96 @@ togglebtn.addEventListener("click",()=>{
  nav.classList.toggle("active")
     
 })
+function report(){
+   const repotbtn = document.getElementById("report");
+   
+   repotbtn.addEventListener("click", async () => {
+      try {
+         const toke=localStorage.getItem('token');
+   const check =parseJwt(toke) 
+   if (check.ispremiumuser){const authenticatedAxios = authentication();
+      const response = await authenticatedAxios.get("premium/report");
+      console.log(response.data);
+      window.location.href='http://localhost:8080/premium/repor'}
+      else{
+         alert("please buy a subscription")
+      }
+         
+         // Handle the response or redirect to the report page
+      } catch (error) {
+         console.error("Error fetching report:", error);
+      }
+   });
+   }
+   async function getExpenseReport() {
+      const yearInput = document.getElementById('year');
+      const year = yearInput.value;
+      console.log(year)
+   
+      if (!year) {
+          alert('Please enter a year');
+          return;
+      }
+   
+      try {
+          const response = await authenticatedAxios.get(`/premium/report?year=${year}`);
+          console.log(response.data)
+          displayReport(response.data);
+      } catch (error) {
+          console.error('Error fetching expense report:', error);
+          alert('Error fetching expense report. Please check the console for details.');
+      }
+   }
+   
+   
+   
+   function displayReport(data) {
+      const reportResult = document.getElementById('reportResult');
+      reportResult.innerHTML = '';
+   
+      if (data.length === 0) {
+          reportResult.innerHTML = 'No expenses found for the specified year.';
+          return;
+      }
+   
+      const ul = document.createElement('ul');
+      data.forEach(expense => {
+          const li = document.createElement('li');
+          li.textContent = `Category: ${expense.category}, Amount: ${expense.amount}, Date: ${expense.date}`;
+          ul.appendChild(li);
+      });
+   
+      reportResult.appendChild(ul);
+   }
+   report()
+   showLeaderboard()
+
+
+
+
+   
+
+   async function download(){
+      try {
+         const linkdiv=document.getElementById("downloadexpense")
+         const response = await authenticatedAxios.get("/download");
+         if(response){
+            const link=response.data.fileURL
+            console.log(response.data.fileURL)
+            const linkElement = document.createElement("a");
+            linkElement.href = link
+           linkElement.download = "Expense.txt"
+            linkElement.click()
+            linkdiv.appendChild(linkElement);
+         }
+         
+        } catch (error) {
+         
+        }
+   
+
+   }
+   function extractFilename(url) {
+      const parts = url.split("/");
+      return parts[parts.length - 1];
+  }

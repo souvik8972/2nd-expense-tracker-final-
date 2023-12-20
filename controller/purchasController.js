@@ -1,9 +1,9 @@
 
 
 const Order = require('../model/orders');
-const dotenv = require('dotenv');
+
 const Razorpay = require('razorpay');
-dotenv.config();
+require("dotenv").config()
 const key_id = "rzp_test_FQUGalowc8Wx10";
 const key_secret = "GGlxuOFmXDq2TxXymELHWKht";
 

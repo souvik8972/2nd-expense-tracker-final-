@@ -15,7 +15,7 @@ route.get("/getExpenses",authorization.auth,controller.getExpenses  );
 route.get("/deleteExpense/:id", authorization.auth, controller.deleteExpenses);
 
 
-
+route.get("/download",authorization.auth,controller.downloadexpense)
 
 
 module.exports = route;
