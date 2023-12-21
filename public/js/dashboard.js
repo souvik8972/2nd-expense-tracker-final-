@@ -29,8 +29,19 @@ const expenseForm = document.getElementById("form");
 expenseForm.addEventListener("submit", addExpense);
 const expenseTableBody = document.getElementById("expenseTableBody")
 expenseTableBody.addEventListener("click",deleteExpense)
+document.getElementById("logout").addEventListener("click",logout)
+const togglebtn=document.getElementById("toggle")
+const body=document.body
+const nav =document.querySelector(".nav")
 
 
+
+//toggle nav////////////////////////////////
+togglebtn.addEventListener("click",()=>{
+   togglebtn.classList.toggle("ri-xrp-fill")
+  nav.classList.toggle("active")
+     
+ })
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -46,24 +57,12 @@ document.addEventListener("DOMContentLoaded", function () {
  }
  
   
-  
+ showpage()
   fetchExpenses();
-
-
-
- 
-
-
-
-
-
-
-
 
  
 });
-
-
+//add Expense //////////////////////////////////////////////////////////////////
 
 async function addExpense(e) {
    e.preventDefault();
@@ -93,40 +92,10 @@ async function addExpense(e) {
 }
 
 
-async function fetchExpenses() {
-
-   try {
-      const authenticatedAxios = authentication();
-      const response = await authenticatedAxios.get("/getExpenses");
-      const expenses = response.data;
-      const totalshow=document.getElementById("total")
-
-      // Update the table with fetched expenses
-      const expenseTableBody = document.getElementById("expenseTableBody");
-      expenseTableBody.innerHTML = "";
-    let total=0;
-      expenses.forEach(expense => {
-       total+=expense.amount
-         const row = document.createElement("tr");
-         row.innerHTML = `
-            <td>${expense.category}</td>
-            <td>${expense.pmethod}</td>
-            <td>${expense.amount}</td>
-            <td>${expense.date}</td>
-          <td><button class="deletebtn" id="${expense.id}">Delete</button></td>
-         `;
-         expenseTableBody.appendChild(row);
-      }
-      
-      
-      );
-      totalshow.innerHTML=`total: ${total}`
-   } catch (error) {
-      console.error("Error fetching expenses:", error);
-   }
-}
 
 
+
+//delete expense////////////////////////////////
 async function deleteExpense(e) {
    try {
       const id=e.target.id;
@@ -142,14 +111,16 @@ async function deleteExpense(e) {
 }
 
 
-
-document.getElementById("logout").addEventListener("click",logout)
+//logout //////////////////////////////////////////////////////////////////
 function logout(){
    localStorage.removeItem("token")
    window.location.href = "http://localhost:8080";
    
 }
 
+
+
+//decode jwt token//////////////////////////////////////////////////////////////////
 function parseJwt (token) {
    var base64Url = token.split('.')[1];
    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -161,15 +132,13 @@ function parseJwt (token) {
 }
 
 
-//purchas Prime
+//purchas Prime////////////////////////////////
 const  rz1=document.getElementById("rzp-button1").onclick = async function (e) {
    console.log("waiting");
    e.preventDefault();
    const authenticatedAxios = await authentication();
 
    try {
-
-       
 
        const response = await authenticatedAxios.get("/premiummembership");
       //  console.log(response);
@@ -193,12 +162,7 @@ const  rz1=document.getElementById("rzp-button1").onclick = async function (e) {
                    
                    document.getElementById("massage").innerHTML="Prime member"
                  
-                 
-                  
              
-
-
-                   
                } catch (error) {
                    console.log(error,"in razor pay");
                }
@@ -220,7 +184,7 @@ const  rz1=document.getElementById("rzp-button1").onclick = async function (e) {
 
  
  
- 
+//show leaderboard //////////////////////////////////////////////////////////////////
 
 async function showLeaderboard(){
    const leaderboardBtn=document.getElementById("leaderboard")
@@ -251,25 +215,16 @@ leaderboardTableBody.appendChild(row)   })}
 else(
    alert("please buy a subscription")
 )
-      
-     
-
-
-   
-      
+    
    } catch (error) {
       console.log(error)
 
 }}
-const togglebtn=document.getElementById("toggle")
-const body=document.body
-const nav =document.querySelector(".nav")
 
-togglebtn.addEventListener("click",()=>{
-  togglebtn.classList.toggle("ri-xrp-fill")
- nav.classList.toggle("active")
-    
-})
+
+
+
+//report //////////////////////////////////////////////////////////////////
 function report(){
    const repotbtn = document.getElementById("report");
    
@@ -312,7 +267,7 @@ function report(){
    }
    
    
-   
+   //display report////////////////////////////////////////////////////////////////
    function displayReport(data) {
       const reportResult = document.getElementById('reportResult');
       reportResult.innerHTML = '';
@@ -337,7 +292,7 @@ function report(){
 
 
 
-   
+   //download report////////////////////////////////////////////////////////////////
 
    async function download(){
       try {
@@ -359,7 +314,81 @@ function report(){
    
 
    }
-   function extractFilename(url) {
-      const parts = url.split("/");
-      return parts[parts.length - 1];
-  }
+
+
+let page=1
+//get Expenses////////////////////////////////
+async function fetchExpenses() {
+
+   try {
+      
+     
+      const authenticatedAxios = authentication();
+      const response = await authenticatedAxios.get(`/getExpenses?page=${page}`);
+      const expenses = response.data.userexpense;
+      const totalshow=document.getElementById("total")
+
+      // Update the table with fetched expenses
+      const expenseTableBody = document.getElementById("expenseTableBody");
+      expenseTableBody.innerHTML = "";
+    let total=response.data.total.totalExpense
+      expenses.forEach(expense => {
+       
+         const row = document.createElement("tr");
+         row.innerHTML = `
+            <td>${expense.category}</td>
+            <td>${expense.pmethod}</td>
+            <td>${expense.amount}<span>Rs.</span></td>
+            <td>${expense.date}</td>
+          <td><button class="deletebtn" id="${expense.id}">Delete</button></td>
+         `;
+         expenseTableBody.appendChild(row);
+      }
+      
+      
+      );
+      showpage()
+      totalshow.innerHTML=`total: ${total}<span>Rs.</span>`
+   } catch (error) {
+      console.error("Error fetching expenses:", error);
+   }
+}
+
+
+
+
+
+
+
+
+   async function showpage(){
+    
+     try {
+       const response = await authenticatedAxios.get(`/getExpenses?page=${page}`);
+      console.log(response.data.totalpages)
+      button=""
+      for (let i=1; i<response.data.totalpages+1;i++){
+         button+=` <li class="pbutton"><a onclick=pagenum(${i}) href=#">${i}</a></li>`}
+
+
+      document.getElementById("pagination").innerHTML=button 
+
+     } catch (error) {
+      
+     }
+
+
+
+
+
+   }
+   //page number
+   function pagenum (index){
+      page=parseInt(index)
+      fetchExpenses()
+
+   }
+  
+
+
+

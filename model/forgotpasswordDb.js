@@ -7,14 +7,14 @@ const ForgotPassword = sequelize.define('forgotpassword',{
 
 id:{
     type:Sequelize.INTEGER,
-    allowNull:false,
+    autoincrement:true,
+    allowNull:true,
     primaryKey:true
 },
 isActive:{
     type:Sequelize.BOOLEAN,
    
 }
-
 
 })
 

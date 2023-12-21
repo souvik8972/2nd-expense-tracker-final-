@@ -1,4 +1,4 @@
-const Expenses = require("../model/expenseDb");
+
 const Expense = require("../model/expenseDb");
 
 const User = require("../model/userDb");
@@ -33,7 +33,7 @@ exports.addExpense = async (req, res) => {
   
 
     // Update the user's totalExpense using the newly created expense
-    const total = Number(user.totalExpense) + Number(amount);
+    var total = Number(user.totalExpense) + Number(amount);
     await user.update(
       { totalExpense: total },
       { transaction: t }
@@ -56,9 +56,30 @@ exports.addExpense = async (req, res) => {
 exports.getExpenses = async (req, res) => {
   const user = req.user;
   try {
-    const userexpense = await user.getExpenses();
+   const page=req.query.page
+   const limit =5
+
+
+    const offset=(page-1)*limit
+    
+    const userexpense= await user.getExpenses(
+      {
+        offset: offset,
+        limit: limit
+      }
+      
+    );
+    const total = await User.findOne({
+      attributes: ['totalExpense' ],
+      where: {
+        id: user.id,
+      },
+     
+  })
+    const totalexpensdeltails=await user.getExpenses()
+    const totalpages=Math.ceil(totalexpensdeltails.length/limit);
     if (userexpense) {
-      res.status(200).json(userexpense);
+      res.status(200).json({userexpense,totalpages,total});
     }
   } catch (error) {
     console.error("Error retrieving expenses:", error);
