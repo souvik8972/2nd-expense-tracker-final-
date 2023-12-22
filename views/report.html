@@ -1,26 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Report</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Borel&family=EB+Garamond&family=Great+Vibes&family=Kaushan+Script&family=Lumanosimo&family=Merienda:wght@300&family=Noto+Serif+Bengali:wght@900&family=Nova+Square&family=Pacifico&family=Raleway:wght@800&family=Righteous&family=Satisfy&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="/css/report.css">
+   
 
+</head>
 <body>
-    <h1>Expense Report</h1>
-    <label for="year">Enter Year:</label>
+    <h1 class="header"><i class="ri-exchange-dollar-line"></i>Expense Buddy</h1>
+    
+        <nav class="nav active">
+            <h1 class="log"><i class="ri-exchange-dollar-line"></i>Expense Buddy</h1>
+            
+                <div class="middle">
+                   
+                    <ul>
+                        <li><a  class="navbtn" href="/dashboard">Dashboard</a></li>
+                        <li id="report"><a class="navbtn" href="#">Report 👑</a></li>
+                        <li id="leaderboard"><a class="navbtn" href="#leaderboardTableBody">Leaderboard 👑</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="right">
+                    <ul>
+                        <li id="massage">Prime Member</li>
+                       
+                      
+                        <li><button class="navbtn" id="logout">Logout</button></li>
+                       
+                    </ul>
+                </div>
+           
+        </nav>
+        <i class="ri-menu-3-fill" id="toggle"></i>
+    <h1 id="header">Expense Report</h1>
+    <div class="container">
+    <label for="year">Enter year</label>
     <input type="text" id="year" placeholder="Enter year">
     <button onclick="getExpenseReport()">Get Report</button>
-    <div id="reportResult"></div>
-    <li><a href="/dashboard">Dashboard</a></li>
+    
+    <div id="reportResult">
+          
+        <table id="table" >
+            <thead>
+              <tr>
+ 
+                <th><span>date</span></th>
+                <th><span>Category</span></th>
+                <th><span>pmethod</span></th>
+                <th><span>amount</span></th>
+                
+              </tr>
+            </thead>
+            <tbody id="reportTable">
+              <!-- <tr>
+                <td class="lalign">20.10.2023</td>
+                <td>Movie</td>
+                <td>Card</td>
+                <td>22Rs.</td>
+               
+              </tr>
+               -->
+              
+            </tbody>
+ 
+          </table>
+    </div>
+    
+</div>
+
+<button onclick="download()" id="downloadexpense"><i class="ri-download-2-line"></i></button>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+
     <script src="/js/dashboard.js"></script>
-
-
-
-    <button onclick="download()" id="downloadexpense">Download File</button>
-
+    
 </body>
 
 </html>

@@ -18,5 +18,4 @@ isActive:{
 
 })
 
-
 module.exports=ForgotPassword

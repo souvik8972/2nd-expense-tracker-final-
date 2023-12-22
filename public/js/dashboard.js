@@ -204,13 +204,12 @@ const leaderboardTableBody=document.getElementById("leaderboardTableBody")
 leaderboardTableBody.innerHTML=""
       data.forEach(userData=>{
 const row =document.createElement("tr")
-row.innerHTML=`
-                  
+row.innerHTML=`           
 <td>${userData.name}</td>
-<td>${userData.totalExpense} <span>Rs.</span></td>
-
+<td>${userData.totalExpense} </td>
 
 `;
+
 leaderboardTableBody.appendChild(row)   })}
 else(
    alert("please buy a subscription")
@@ -226,13 +225,15 @@ else(
 
 //report //////////////////////////////////////////////////////////////////
 function report(){
+
    const repotbtn = document.getElementById("report");
    
    repotbtn.addEventListener("click", async () => {
       try {
          const toke=localStorage.getItem('token');
+         const authenticatedAxios = authentication();
    const check =parseJwt(toke) 
-   if (check.ispremiumuser){const authenticatedAxios = authentication();
+   if (check.ispremiumuser){
       const response = await authenticatedAxios.get("premium/report");
       console.log(response.data);
       window.location.href='http://localhost:8080/premium/repor'}
@@ -269,7 +270,7 @@ function report(){
    
    //display report////////////////////////////////////////////////////////////////
    function displayReport(data) {
-      const reportResult = document.getElementById('reportResult');
+      const reportResult = document.getElementById('reportTable');
       reportResult.innerHTML = '';
    
       if (data.length === 0) {
@@ -277,14 +278,19 @@ function report(){
           return;
       }
    
-      const ul = document.createElement('ul');
       data.forEach(expense => {
-          const li = document.createElement('li');
-          li.textContent = `Category: ${expense.category}, Amount: ${expense.amount}, Date: ${expense.date}`;
-          ul.appendChild(li);
+         const row = document.createElement("tr");
+         row.innerHTML = `
+         <td>${expense.date}</td>
+            <td>${expense.category}</td>
+            <td>${expense.pmethod}</td>
+            <td>${expense.amount}<span> Rs.</span></td>
+            
+         
+         `;
+         reportResult.appendChild(row);
       });
    
-      reportResult.appendChild(ul);
    }
    report()
    showLeaderboard()
@@ -338,9 +344,9 @@ async function fetchExpenses() {
          row.innerHTML = `
             <td>${expense.category}</td>
             <td>${expense.pmethod}</td>
-            <td>${expense.amount}<span>Rs.</span></td>
+            <td>${expense.amount}<span> Rs.</span></td>
             <td>${expense.date}</td>
-          <td><button class="deletebtn" id="${expense.id}">Delete</button></td>
+          <td><button class="deletebtn" id="${expense.id}">x</button></td>
          `;
          expenseTableBody.appendChild(row);
       }
@@ -348,7 +354,7 @@ async function fetchExpenses() {
       
       );
       showpage()
-      totalshow.innerHTML=`total: ${total}<span>Rs.</span>`
+      totalshow.innerHTML=`total: ${total}<span> Rs.</span>`
    } catch (error) {
       console.error("Error fetching expenses:", error);
    }
@@ -384,6 +390,8 @@ async function fetchExpenses() {
    }
    //page number
    function pagenum (index){
+      const pageno=document.getElementById("pageno")
+      pageno.innerHTML=`page:${index}`
       page=parseInt(index)
       fetchExpenses()
 

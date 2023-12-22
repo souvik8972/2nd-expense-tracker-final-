@@ -1,399 +1,294 @@
 *{
     margin:0;
     padding:0;
-}
 
-nav{
+}
+body{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    background: url("./img/left.jpg");
+    background-position: left bottom;
    
-    color: blue;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 8vh;
-    box-shadow: rgb(0, 0, 247) 0px 5px, rgba(43, 38, 180, 0.636) 0px 10px, rgba(79, 83, 188, 0.464) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
-
-}
-
-
-.nav .middle{
-    display: flex;
-    width:50%;
-    height: 100%;
-   
-   justify-content: space-between;
-  
-   justify-content: center;
-   align-items: center;
-   justify-content: flex-start;
-   margin-left: 2vh;
-}
-.nav .right{
-    display: flex;
-    width: 30%;
-    height: 100%;
-
-    
-    justify-content: space-between;
-  
-}
-.nav .right ul{
-    width: 100%;
-  
-
-    
 }
 .header{
     display: none;
 }
-#toggle{
-    display: none;
+nav{
+    display:flex;
+    text-align: center;
+    height: 9vh;
+    background-color: #fafafa8c;
     
-}
+    
 
-li{
+}
+nav .log{
+    width:15vw;
+  color: #0202f5;
+   height: 100%;
+   margin-top: 1vw;
+   font-family: 'Merienda', cursive;
+ 
+}
+.nav .middle,.nav .right{
+
+    width:30vw;
+
+
+}
+.nav .middle ul,.nav .right ul{
+    display:flex;
+    align-items: center;
+
+    justify-content: center;
+
+justify-content: space-around;
+    height: 100%;
+}
+.nav .middle ul li ,.nav .right ul li{
+
     list-style: none;
-    color: blue;
-    
-}
-li a{
-   color: blue;
-   text-decoration: none;
-}
-.nav .middle h1{
-
-    width: 30%;
-    text-align: left;
-}
-.nav .middle ul{
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
   
-    align-items: center;
+}
+.nav .middle ul li a,.nav .right ul li a{
+    text-decoration: none;
+    font-family: 'Ubuntu', sans-serif;
 }
 
-    
-.nav .right ul{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-}
-.nav .right ul{
-    align-items: center;
-}
-
-
-.right ul li button{
-    padding: 5px;
-    cursor: pointer;
-    color: blue;
-    border-radius: 10px;
-    background: #1313d1;
-      border-radius: 999px;
-      box-shadow: #1010e4 0 10px 20px -10px;
-      box-sizing: border-box;
-      color: #FFFFFF;
-      cursor: pointer;
-      font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
-      font-size: 9px;
-      font-weight: 700;
-      line-height: 16px;
-      opacity: 1;
-      outline: 0 solid transparent;
-      padding: 8px 18px;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-      width: fit-content;
-      word-break: break-word;
-      border: 0;
-      
-}
-
-
-.right ul li button:hover{
-    background-color: rgb(253, 253, 253);
-    color: blue;
-}
-
-
-#leaderboard1{
-    margin: 10%;
-
-    padding: auto;
-    width: 50vh;
-    height: 60vh;
-    
-    text-align: center;
-    border-radius: 20px;
-    border: 2px solid rgba(37, 37, 225, 0.452);
-    background-color: #3535c9a4;
-
-
-}
-#leaderboard1 h2{
-    margin-bottom: 10px;
-    background-color: #ffffff;
-    color: blue;
-    border-radius: 20px 20px 0 0;
+.nav .right{
   
-   
-}
-#leaderboard1 table {
-  margin-top:10px;
-    width: 90%;
-    margin: auto;
-    height: 100px;
-    overflow: scroll;
-
-}
-#leaderboard1 table tr th,
-#leaderboard1 table tr td{
-    border: 2px solid rgb(253, 253, 253);
-    border-radius: 10px;
-    color:#1100fc;
-    background-color: #ffffff;
-}
-body{
-    background: url("./left.jpg");
-    background-position: bottom left;
-   
-    
-}
-
-
-
-.Month_table,.yearly_table{
-    width: 80vh;
-   min-height: 30vh;
-   max-height: 60vh;
-position: relative;
-   background-color: transparent;
-   margin: auto;
-   margin-top: 10vh;
-   text-align: center;
-   border-radius: 3vh;
-   overflow-y: scroll;
-   overflow-x: hidden;
-}
-.Month_table::-webkit-scrollbar,.yearly_table::-webkit-scrollbar{
-    display: none;
-}
-.body::-webkit-scrollbar{
-    display: none;
-}
-.Month_table #table,.yearly_table #table{
-    background-color: rgb(200, 191, 239);
-    width: 90%;
-    margin: auto;
-    border-radius: 3vh;
-   margin-bottom: 3vh;
-  
-    overflow: scroll;
-
-     position: relative;
-}
-.Month_table #table thead th,.yearly_table #table thead th{
-    background-color: #1100fc;
-    color: #ffffff;
-    border-radius: 10vh;
+    margin-left:auto !important;
 
 }
 
 
-.Month_table #table thead tr th, .yearly_table #table thead tr th{
-    background-color: #1100fc;
-    color: #ffffff;
-    border-radius: 10vh;
 
+.navbtn{
+  background: #0202f5;
+  border-radius: 999px;
+  box-shadow: #11119f 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
 }
-.Month_table h1,.yearly_table h1{
-    color: white;
-    margin-bottom: 1vh;
-    background-color: #1313d1;
-    border-radius: 0 3vh;
-    position: sticky;
-   
-    width: 100%;
-}
-
-
- .total,.h{
-   
-    font-size: 2vh;
-   text-transform: uppercase;
-    background-color: #1100fc;
-    width: 30%;
-    margin: auto;
+.nav .right ul li #logout{
+    width: 10vh ;
+    height: 5vh;
     text-align: center;
-    padding: 1vh;
-    border-radius: 0 0px 20px 20px;
-    color: #FFFFFF;
-    box-shadow: 2px 2px 2px black ;
-    
+    background-color: darkblue;
 }
 
-.h{
-    margin-top: 5vh;
-    margin-bottom: -8vh;
-    border-radius: 20px;
+.navbtn:hover{
+    background-color: #FFFFFF;
+    color: #0202f5;
 }
-
-
-
-
-
-.download{
-    background-color: #1313d1;
-    width: 10vh;
-    padding: 10px;
-    color: #FFFFFF;
-    border-radius: 20px;
-    text-align: center;
-    position: fixed;
-    right:30px;
-    bottom:30px;
-    box-shadow: 2px 2px 2px black ;
-    
-
+.nav .right ul li #logout:hover{
+    background-color: #FFFFFF;
+    color: #0202f5;
 }
-.download:hover{
-    background-color: #ffffff;
-    color: #1100fc;
-    box-shadow: 2px 2px 2px black ;
-}
-
-
-
-
-
-@media only screen and (max-width: 600px){
-    .header{
-        display: block;
-        padding: 10px 20px;
-        height: 50px;
-      
-      color: #1010e4;
-       box-shadow: rgb(0, 0, 247) 0px 5px, rgba(43, 38, 180, 0.636) 0px 10px, rgba(79, 83, 188, 0.464) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
-    }
-    
-    i{
-        display: inline;
-        z-index: 6;
-        font-size: 100;
-        
-    }
-    nav{
-        width: 100%;
-        height: 500px;
-      flex-direction: column;
-      background: rgba( 7, 10, 233, 0.1 );
-      background: rgba( 213, 213, 216, 0.55 );
-      box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-      backdrop-filter: blur( 11px );
-      -webkit-backdrop-filter: blur( 11px );
-      border-radius: 10px;
-      border: 1px solid rgba( 255, 255, 255, 0.18 );
-      overflow: hidden;
-      
-      
-    }
-    nav .middle {
-       
-        flex-direction: column;
-       
-       
-    } 
-nav .middle h1{
-    display: none;
-}
-    nav .right{ 
-        flex-direction: column;
-        
-        position: absolute;
-        top:255px;
-        left:37%;
-        text-align: center;
-        gap:70px;
-    }
-    nav .middle{
-        position: absolute;
-        left:23%;
-    }
-    nav .middle ul {
-        flex-direction: column;
-    
-        margin-top: 50px;
-        width: 100px;
-        gap:30px;
-        
-    }
-    nav .middle h1{
-        width: 800px;
-        position: absolute;
-        background-color: blue;
-        left:10px;
-    }
-    nav .middle ul li{
-        background-color: blue;
-        width: 200px;
-        z-index: 3;
-        text-align: center;
-        color: #FFFFFF;
-    }
-    nav .right ul{
-        flex-direction: column;
-        gap:30px;
-    }
-    nav .right ul li{
-        width: 200px;
-        background-color: blue;
-        color: #FFFFFF;
-    }
-    
-    nav .right ul li,nav .middle ul li{
-        padding:10px;
-        color: #FFFFFF;
-    }
-    nav .right ul li a,nav .middle ul li a{
-        padding:10px;
-        color: #FFFFFF;
-    }
-
-    nav .right .middle{
-        display: none;
-    }
-
-.nav{
-    display: none;
-}
-.active{
-    display:block;
-}
-ul li{
-    border-radius: 25px;
-}
-
-.right ul li:nth-child(3){
-    border-radius: 10px;
-   
-    background-color: transparent;
-    
-}
-
 #toggle{
-    display: inline;
+    display: none;
+}
+#header{
+    background-color: #0202f5;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.container{
+    width: 60vw;
+    margin: auto;
+    margin-top: 5vh;
+}
+label{
+   color: #0202f5;
+    font-size: 20px;
+    margin-left: 20px;
+   
+}
+.container button{
+    width: 10vw;
+    height: 3vh;
+    background-color: #0202f5;
+    color: #FFFFFF;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+ border-radius: 2vh;
+}
+.container button:hover{
+    background-color: #FFFFFF;
+    color: #0202f5;
+}
+input{
+    border-radius: 20px;
+    text-align: center;
+}
+#reportResult{
+   
+    background-color: rgba(0, 0, 0, 0.264);
+    color: #FFFFFF;
+    margin: auto;
+    margin-top: 2vh;
+    background: rgba( 255, 255, 255, 0.15 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 11px );
+-webkit-backdrop-filter: blur( 11px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+#reportResult table{
+    margin: auto;
+    width: 100%;
+    padding: 2vh;
+    
+}
+#reportResult table tbody tr td{
+   text-align: center;
+   background-color: #11119f;
+   color: #FFFFFF;
+   border-radius: 20px 0 20px 0;
+}
+#downloadexpense{
+    background-color: #0202f5;
+   width: 50px;
+   height: 50px;
+    color: #FFFFFF;
+    border-radius: 50%;
+    
     font-size: 30px;
     position: absolute;
-    top:15px;
-    right:15px;
-}
-#leaderboard1 {
-    width: 100px;
-    text-align: center;
-    display: none;
-}
+    top:90%;
+    position: sticky;
+  left: 20px;
+  cursor:pointer;
+    
 
 }
+#downloadexpense:hover{
+    background-color: #FFFFFF;
+    color: #0202f5;
+}
+@media screen and (max-width: 600px) {
+    .nav{
+   
+     height: 30vh;
+     flex-direction: column;
+    background: url("./img/left.jpg");
+  
+display: none;
+ 
+    }
+    
+     .nav h1{
+         display: none;
+     }
+     .nav .middle ,.nav .right{
+        
+         margin: auto;
+        
+       
+     }
+     .nav .middle ul,.nav .right ul{
+         margin-top: 10px !important;
+         flex-direction: column;
+         gap:10px;
+        
+     }
+     
+     
+     #toggle{
+         display: block;
+         position: absolute;
+         top:20px;
+         font-size: 30px;
+         right:20px;
+         color: #0202f5;
+ 
+     }
+ 
+     .header{
+         display: block;
+         margin:20px 0 0 20px;
+         font-size: 20px;
+         font-family: 'Merienda', cursive;
+         margin-bottom: 1.2vh;
+         color: #0202f5;
+        
+     }
+     .header i{
+         background-color: #0202f5;
+         color: #fafafa;
+         font-weight: 100;
+     }
+     .hero{
+        
+         background-image: url("./img/right2.jpg");
+         background-size: cover;
+         background-position: center left ;
+     }
+     #form1{
+         text-align: center;
+     }
+     #form1 form{
+         width:250px;
+     }
+     .styled-table{
+         overflow: scroll;
+ 
+     }
+     .styled-table h2,.styled-table table{
+         width: 600px;
+     }
+    
+ .active{
+     display:block;
+    
+ }
+ #header{
+    margin-top: 50px;
+ }
+ .container button{
+    width: 150px;
+    margin-top: 20px;
+    margin-left: 30%;
+   
+ }
+ input{
+    width: 250px;
+    height: 40px;
+    margin-left: 15%;
+   
+ }
+ label{
+    margin-left: 70px;
+    text-transform: uppercase;
+    margin-left: 35%;
+ }
+ .container{
+    width: 100%;
+ }
+ #reportResult{
+   
+    overflow: hidden;
+     overflow: scroll;
+   
+ }
+ #reportResult #table{
+    overflow: scroll;
+    width: 600px;
+ }
 
+ }
