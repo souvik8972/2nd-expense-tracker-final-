@@ -17,7 +17,7 @@ exports.leaderboard = async (req, res) => {
 };
 
 exports.report = async (req, res) => {
-    const user = req.user; // Assuming req.user contains the authenticated user
+    const user = req.user; 
     const year = req.query.year;
    
 

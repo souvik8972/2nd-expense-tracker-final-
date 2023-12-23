@@ -181,14 +181,23 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     background-color: #FFFFFF;
     color: #0202f5;
 }
+.ac{
+    background-color: white;
+    border: 1px solid #11119f;
+    color: #0202f5;
+}
+.ac:hover{
+    background-color:#11119f ;
+    
+    color: white;
+}
 @media screen and (max-width: 600px) {
     .nav{
    
      height: 30vh;
      flex-direction: column;
     background: url("./img/left.jpg");
-  
-display: none;
+  display: none;
  
     }
     
@@ -202,9 +211,11 @@ display: none;
        
      }
      .nav .middle ul,.nav .right ul{
-         margin-top: 10px !important;
+        
          flex-direction: column;
-         gap:10px;
+         height: 19vh;
+      
+         
         
      }
      

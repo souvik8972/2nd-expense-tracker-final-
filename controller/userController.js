@@ -1,9 +1,11 @@
 const User=require("../model/userDb")
 const bcrypt=require("bcrypt")
 const jwt=require("jsonwebtoken")
-require('dotenv').config();
+require("dotenv").config()
+const secretKey=process.env.SECRET_KEY
+
+
 //get the signup page
-const secretKey="thisissecret"
 exports.getsignUp=(req,res)=>{
     res.sendFile("signup.html",{root:"views"})
 }

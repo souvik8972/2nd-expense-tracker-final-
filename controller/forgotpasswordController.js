@@ -1,13 +1,12 @@
 const User=require("../model/userDb")
-
+const uuid=require("uuid");
 const bcrypt=require("bcrypt")
 const jwt=require("jsonwebtoken")
-const secret="thisissecret"
+require("dotenv").config()
 const Forgotpassword=require("../model/forgotpasswordDb")
-
 var nodemailer = require('nodemailer');
 
-
+const secret=process.env.SECRET_KEY
 exports.forgotPasswordGet=(req,res)=>{
     res.sendFile("forgotpassword.html",{root:"views"})
 }
@@ -29,12 +28,13 @@ exports.forgotPasswordPost=async(req,res)=>{
          if (!oldUser){
              return res.status(404).json({"message": "User not found"})
          }
+        const id=uuid.v4()
          oldUser.createForgotpassword({
-            id:oldUser.id,
+            id:id,
             isActive:true
          })
          const token=jwt.sign({email:oldUser.email ,id:oldUser.id},secret,{expiresIn:"10m"})
-         const link=`http://localhost:8080/resetpassword/${oldUser.id}/${token}`
+         const link=`http://localhost:8080/resetpassword/${id}/${token}`
          var transporter = nodemailer.createTransport({
              service: 'gmail',
            
@@ -47,9 +47,11 @@ exports.forgotPasswordPost=async(req,res)=>{
            var mailOptions = {
              from: 'souvik8582@gmail.com',
              to: oldUser.email,
-             subject: 'Sending Email using Node.js',
+             subject: 'Expense Buddy Reset password mail',
              
-             text: link,
+             text:" reset your password",
+             html:`<p> reset your password</p>
+             <a href=${link}>Reset password</a>`,
            };
            
            transporter.sendMail(mailOptions, function(error, info){
@@ -79,6 +81,7 @@ exports.forgotPasswordPost=async(req,res)=>{
 
  exports.resetPasswordGet= async (req, res) => {
     const { id, token } = req.params;
+  
     try {
       const forgotpassword= await Forgotpassword.findOne({
             where:{
@@ -87,28 +90,20 @@ exports.forgotPasswordPost=async(req,res)=>{
             }
         })
         if(!forgotpassword){
-            return res.status(401).json({
-                message:"expired link"
-            })
+            return res.status(401).send(`<html>
+          <h1>Link expired</h1>
+              <a href="/">home</a>
+          </html>`)
         }
         forgotpassword.update({
             isActive:false
         })
         
-        try {
         
-            const oldUser = await User.findOne({
-              where: {
-                id
-              }
-            });
-        
-            if (!oldUser) {
-              return res.status(404).json({ message: "User not found" });
-            }
+           
         
             try {
-              console.log(req.body.password)
+             
               const verify =  jwt.verify(token, secret);
         
               res.status(200).sendFile("changepassword.html",{root:"views"})
@@ -119,9 +114,7 @@ exports.forgotPasswordPost=async(req,res)=>{
           } catch (error) {
             res.status(500).json({ error: error.message });
           }
-    } catch (error) {
-        
-    }
+    
 
     
   }
@@ -131,13 +124,24 @@ exports.forgotPasswordPost=async(req,res)=>{
 
 
 
-  exports.resetPasswordPost=async (req, res) => {
+  exports.resetPasswordPost = async (req, res) => {
     const { id, token } = req.params;
+  
     try {
+      const forgotpassword = await Forgotpassword.findOne({
+        where: {
+          id,
+        },
+      });
+  
+      if (!forgotpassword) {
+        return res.status(404).json({ message: "Reset entry not found" });
+      }
+  
       const oldUser = await User.findOne({
         where: {
-          id
-        }
+          id: forgotpassword.UserId,
+        },
       });
   
       if (!oldUser) {
@@ -145,13 +149,12 @@ exports.forgotPasswordPost=async(req,res)=>{
       }
   
       try {
-        console.log(req.body.password)
-        const verify =  jwt.verify(token, secret);
-       
+        console.log("Received Token:", token);
+        const verify = jwt.verify(token, secret);
+        console.log("Decoded Token:", verify);
   
-       const password=req.body.password
-       const confirmPassword=req.body.confirmPassword
-        
+        const password = req.body.password;
+        const confirmPassword = req.body.confirmPassword;
   
         if (password !== confirmPassword) {
           return res.status(400).json({ message: "Password and confirmPassword do not match" });
@@ -161,20 +164,24 @@ exports.forgotPasswordPost=async(req,res)=>{
   
         await User.update(
           {
-            password: hashedPassword
+            password: hashedPassword,
           },
           {
             where: {
-              id
-            }
+              id: oldUser.id,
+            },
           }
         );
   
         res.status(200).json({ message: "Password reset successfully" });
       } catch (tokenError) {
+        console.error("Token Verification Error:", tokenError);
         return res.status(401).json({ message: "Token verification failed" });
       }
     } catch (error) {
+      console.error("Server Error:", error);
       res.status(500).json({ error: error.message });
     }
-  }
+  };
+  
+  

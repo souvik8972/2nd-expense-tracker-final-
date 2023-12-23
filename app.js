@@ -15,6 +15,7 @@ const dashboardRoute=require("./routes/dashboard")
 const primemembership=require("./routes/purchase")
 const passwordRoute=require("./routes/forgotPassword")
 const premiumFeature=require("./routes/premiumFeature")
+// const pagenotfound=require("./routes/pagenotfound")
 
 
 //
@@ -35,6 +36,9 @@ app.use(primemembership)
 app.use("/premium",premiumFeature)
 
 
+app.get("*",(req, res) => {
+    res.sendFile("404.html", { root: "views" });
+})
 
 //hasmany relations
 User.hasMany(Expense)

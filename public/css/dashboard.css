@@ -17,7 +17,7 @@ nav{
     height: 9vh;
     background-color: #fafafa8c;
     
-    
+    transition: 0.6s  all ease;
 
 }
 nav .log{
@@ -34,6 +34,7 @@ nav .log{
 
 
 }
+
 .nav .middle ul,.nav .right ul{
     display:flex;
     align-items: center;
@@ -82,6 +83,8 @@ justify-content: space-around;
   word-break: break-word;
   border: 0;
 }
+
+
 .nav .right ul li #logout{
     width: 10vh ;
     height: 5vh;
@@ -92,6 +95,16 @@ justify-content: space-around;
 .navbtn:hover{
     background-color: #FFFFFF;
     color: #0202f5;
+}
+.ac{
+    background-color: white;
+    border: 1px solid #11119f;
+    color: #0202f5;
+}
+.ac:hover{
+    background-color:#11119f ;
+    
+    color: white;
 }
 .nav .right ul li #logout:hover{
     background-color: #FFFFFF;
@@ -135,6 +148,7 @@ border-radius: 3px;
 color: #FFFFFF;
 padding:12px;
 font-size: 20px;
+
   
 }
 .hero .addExpenseForm #form1 form{
@@ -177,6 +191,8 @@ option,label,select,input{
     background-color: #0202f5;
     box-shadow: 2px 2px 2px  black;
     font-family: 'Merienda', cursive;
+    height: 5vh;
+    
     
 }
 .styled-table table{
@@ -207,9 +223,7 @@ option,label,select,input{
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.473);
     margin-bottom: 20px;
 }
-.styled-table table tbody tr td:last-child{
-    background-color: transparent;
-}
+
 .styled-table table tbody tr td button {
     background-color: #FE918D;
     width: 3vh;
@@ -228,6 +242,7 @@ option,label,select,input{
 .pagination-container{
   
     text-align: center;
+    padding: 1vh;
    
 }
 .pagination-container h4{
@@ -257,7 +272,13 @@ option,label,select,input{
     border: 2px solid blue;
     color: blue;
 }
-
+#leaderboard1{
+    display: none;
+}
+#ld{
+    width: 50%;
+   
+}
 
 
 @media screen and (max-width: 600px) {
@@ -267,6 +288,7 @@ option,label,select,input{
      flex-direction: column;
     background: url("./img/left.jpg");
    padding: 10px 0 0 10px;
+   transition: all ease 0.9s;
  display: none;
  
     }
@@ -334,6 +356,14 @@ option,label,select,input{
     
  .active{
      display:block;
+     
     
  }
+ #totalrs{
+    background: #0202f5;
+ }
+ #ld{
+    width: 100%;
+   
+}
  }

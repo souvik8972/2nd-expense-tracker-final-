@@ -188,28 +188,32 @@ const  rz1=document.getElementById("rzp-button1").onclick = async function (e) {
 
 async function showLeaderboard(){
    const leaderboardBtn=document.getElementById("leaderboard")
+  
    leaderboardBtn.style.display="block"
+
 leaderboardBtn.addEventListener("click",showingLeaderboard)
 
 }
 async function showingLeaderboard(){
 
    try {
+      const leaderboard=document.getElementById("leaderboard1")
+      leaderboard.style.display="block"
       const toke=localStorage.getItem('token');
       const check =parseJwt(toke)
       if(check.ispremiumuser) { const response=await authenticatedAxios.get("premium/leaderboard")
       const data=response.data
-console.log(data)
+
 const leaderboardTableBody=document.getElementById("leaderboardTableBody")
 leaderboardTableBody.innerHTML=""
       data.forEach(userData=>{
 const row =document.createElement("tr")
 row.innerHTML=`           
 <td>${userData.name}</td>
-<td>${userData.totalExpense} </td>
+<td>${userData.totalExpense}</td>
 
 `;
-
+console.log(userData.name,userData.totalExpense)
 leaderboardTableBody.appendChild(row)   })}
 else(
    alert("please buy a subscription")

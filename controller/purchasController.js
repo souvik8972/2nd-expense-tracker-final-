@@ -1,13 +1,12 @@
 
 
 const Order = require('../model/orders');
-
-const Razorpay = require('razorpay');
 require("dotenv").config()
-const key_id = "rzp_test_FQUGalowc8Wx10";
-const key_secret = "GGlxuOFmXDq2TxXymELHWKht";
+const Razorpay = require('razorpay');
 
-const secretKey="thisissecret"
+const key_id = "rzp_test_FQUGalowc8Wx10";
+const key_secret ="GGlxuOFmXDq2TxXymELHWKht";
+const secretKey=process.env.SECRET_KEY
 const jwt=require("jsonwebtoken")
 
 exports.premiummembership = async (request, response, next) => {
