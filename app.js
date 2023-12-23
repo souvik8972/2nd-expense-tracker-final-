@@ -9,6 +9,7 @@ const Order=require("./model/orders")
 const Forgotpassword=require("./model/forgotpasswordDb")
 const bodyParser = require('body-parser')
 const helmet=require("helmet")
+const compression=require("compression")
 
 //
 
@@ -24,7 +25,7 @@ const premiumFeature=require("./routes/premiumFeature")
 //
 
 
-
+app.use(compression())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, "public")))
