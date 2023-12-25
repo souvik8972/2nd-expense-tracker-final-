@@ -26,6 +26,7 @@ try {
 
  if (response.status === 200) {
      alert("Password reset successfully");
+     window.location.href="/login"
      // Redirect or perform additional actions as needed
  }
 } catch (error) {

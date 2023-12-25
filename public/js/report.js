@@ -1,25 +1,35 @@
+
 function authentication() {
-    const tokenData = JSON.parse(localStorage.getItem('token'));
-    console.log('Token Data:', tokenData);
- 
-    if (tokenData) {
-       const { token } = tokenData;
- 
-       // Return the authenticated axios instance
-       const authaxis =  axios.create({
-          baseURL: 'http://localhost:8080',
-          headers: {
-             'Authorization': `Bearer ${token}`,
-             
-          },
-       });
- 
-       return authaxis;
-    } else {
-       alert("Please log in first");
-       window.location.href = "http://localhost:8080/login";
-    }
- }
+   const tokenData = JSON.parse(localStorage.getItem('token'));
+   console.log('Token Data:', tokenData);
+
+   let token;
+
+   if (tokenData) {
+      if (typeof tokenData === 'object') {
+         token = tokenData.token;
+      } else {
+         // If tokenData is not an object, assume it's the actual token value
+         token = tokenData;
+      }
+
+      console.log(token, "ttttt");
+
+      // Return the authenticated axios instance
+      const authaxis = axios.create({
+         baseURL: 'http://localhost:8080',
+         headers: {
+            'Authorization': `Bearer ${token}`,
+         },
+      });
+
+      return authaxis;
+   } else {
+      alert("Please log in first");
+      window.location.href = "http://localhost:8080/login";
+   }
+}
+
 ////////////////////////////////////////////////////////////////
 const authenticatedAxios = authentication();
  const togglebtn=document.getElementById("toggle")
@@ -50,8 +60,8 @@ function report(){
     const check =parseJwt(toke) 
     if (check.ispremiumuser){
        const response = await authenticatedAxios.get("premium/report");
-       console.log(response.data);
-       window.location.href='http://localhost:8080/premium/repor'}
+      //  console.log(response.data);
+       window.location.href='http://localhost:8080/premium/reports'}
        else{
           alert("please buy a subscription")
        }
@@ -65,7 +75,7 @@ function report(){
     async function getExpenseReport() {
        const yearInput = document.getElementById('year');
        const year = yearInput.value;
-       console.log(year)
+      //  console.log(year)
     
        if (!year) {
            alert('Please enter a year');
@@ -74,7 +84,7 @@ function report(){
     
        try {
            const response = await authenticatedAxios.get(`/premium/report?year=${year}`);
-           console.log(response.data)
+         //   console.log(response.data)
            displayReport(response.data);
        } catch (error) {
            console.error('Error fetching expense report:', error);

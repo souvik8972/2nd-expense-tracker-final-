@@ -134,11 +134,11 @@ exports.downloadexpense=async(req,res)=>{
 try {
   
   const expenses= await req.user.getExpenses()
-  console.log(expenses)
+  // console.log(expenses)
   const  stringify= JSON.stringify(expenses)
   const filename="Expenses.txt"
   const fileURL= await uploadToS3(stringify,filename)
-  console.log(fileURL)
+  // console.log(fileURL)
   res.status(200).json({fileURL,success:true})
   
 } catch (error) {
@@ -171,10 +171,10 @@ function uploadToS3(data, filename) {
       s3bucket.upload(params, (err, s3response) => {
         if (err) {
           console.log(err);
-          console.log(process.env.IAM_USER_KEY)
+          // console.log(process.env.IAM_USER_KEY)
           reject(err);
         } else {
-          console.log("Success", s3response);
+          // console.log("Success", s3response);
           // Resolve with the file URL
           resolve(s3response.Location);
         }

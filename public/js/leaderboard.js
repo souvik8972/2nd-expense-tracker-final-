@@ -48,12 +48,14 @@ togglebtn.addEventListener("click",()=>{
        const data=response.data
  console.log(data)
  const leaderboardTableBody=document.getElementById("leaderboardTableBody")
+ 
  leaderboardTableBody.innerHTML=""
-       data.forEach(userData=>{
+       data.forEach((userData)=>{
  const row =document.createElement("tr")
+
  row.innerHTML=`           
  <td>${userData.name}</td>
- <td id="totalrs">${userData.totalExpense}  </td>
+ <td id="totalrs">${userData.totalExpense} <span id="span">Rs.</span> </td>
  
  `;
  

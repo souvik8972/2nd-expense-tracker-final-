@@ -9,7 +9,7 @@ const premiumFeature=require("../controller/premiumFeatureController")
 route.get("/leaderboard",authController.auth,premiumFeature.leaderboard)
 
 route.get("/report",authController.auth,premiumFeature.report)
-route.get("/repor",(req, res) =>{
+route.get("/reports",(req, res) =>{
     res.sendFile("report.html",{root:"views"})
 })
 

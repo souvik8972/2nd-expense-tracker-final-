@@ -51,8 +51,8 @@ exports.updatetransactionstatus = async (request, response, next) => {
                 { where: { order_id: order_id }}
             ),
         ]);
-
-        response.status(202).json({ success: true, message: "Thank you for being a premium user",token: jwt.sign({ userId: user.id,name:user.name,ispremiumuser:true}, secretKey, { expiresIn: "5d" }) });
+        const token= jwt.sign({ userId: user.id,name:user.name,ispremiumuser:true}, secretKey, { expiresIn: "5d" })
+        response.status(202).json({ success: true, message: "Thank you for being a premium user",token: token});
     } catch (error) {
         console.log(error);
         response.status(500).json({ success: false, message: "Error updating transaction" });

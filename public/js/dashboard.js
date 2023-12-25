@@ -2,17 +2,25 @@
 
 function authentication() {
    const tokenData = JSON.parse(localStorage.getItem('token'));
-   console.log('Token Data:', tokenData);
+   // console.log('Token Data:', tokenData);
+
+   let token;
 
    if (tokenData) {
-      const { token } = tokenData;
+      if (typeof tokenData === 'object') {
+         token = tokenData.token;
+      } else {
+         // If tokenData is not an object, assume it's the actual token value
+         token = tokenData;
+      }
+
+      // console.log(token, "ttttt");
 
       // Return the authenticated axios instance
-      const authaxis =  axios.create({
+      const authaxis = axios.create({
          baseURL: 'http://localhost:8080',
          headers: {
             'Authorization': `Bearer ${token}`,
-            
          },
       });
 
@@ -22,6 +30,7 @@ function authentication() {
       window.location.href = "http://localhost:8080/login";
    }
 }
+
 
 ////////////////////////////////////////////////////////////////
 const authenticatedAxios = authentication();
@@ -33,7 +42,7 @@ document.getElementById("logout").addEventListener("click",logout)
 const togglebtn=document.getElementById("toggle")
 const body=document.body
 const nav =document.querySelector(".nav")
-
+let page=1
 
 
 //toggle nav////////////////////////////////
@@ -48,17 +57,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-   const toke=localStorage.getItem('token');
-   const check =parseJwt(toke) 
+   const token=localStorage.getItem('token');
+   // console.log("tokrnnnnn",token)
+   const check =parseJwt(token) 
  if(check.ispremiumuser){
     document.getElementById("rzp-button1").style.display="none"
   document.getElementById("massage").innerHTML="Prime member"
 
  }
- 
-  
  showpage()
-  fetchExpenses();
+fetchExpenses();
 
  
 });
@@ -83,9 +91,11 @@ async function addExpense(e) {
      
       const response = await authenticatedAxios.post("/addExpense", data);
       e.target.reset()
-      alert("data added successfully")
       // Refresh 
       fetchExpenses();
+      alert("data added successfully")
+      
+   
    } catch (error) {
       console.error("Error adding expense:", error);
    }
@@ -100,11 +110,12 @@ async function deleteExpense(e) {
    try {
       const id=e.target.id;
       const response = await authenticatedAxios.get(`/deleteExpense/${id}`);
+      // Refresh the expenses after deletion
+     
       fetchExpenses();
       console.log("Expense deleted successfully");
 
-      // Refresh the expenses after deletion
-     
+      
    } catch (error) {
       console.error("Error deleting expense:", error);
    }
@@ -134,7 +145,7 @@ function parseJwt (token) {
 
 //purchas Prime////////////////////////////////
 const  rz1=document.getElementById("rzp-button1").onclick = async function (e) {
-   console.log("waiting");
+   // console.log("waiting");
    e.preventDefault();
    const authenticatedAxios = await authentication();
 
@@ -156,11 +167,11 @@ const  rz1=document.getElementById("rzp-button1").onclick = async function (e) {
                    
                    localStorage.setItem("token",JSON.stringify(res.data.token))
                    
-                  
-                   alert("Congratulations You are now Premium member please login")
+                  // console.log(localStorage.getItem("token"))
+                   alert("Congratulations You are now Premium member ")
                    document.getElementById("rzp-button1").style.display="none"
-                   
                    document.getElementById("massage").innerHTML="Prime member"
+                   
                  
              
                } catch (error) {
@@ -213,7 +224,7 @@ row.innerHTML=`
 <td>${userData.totalExpense}</td>
 
 `;
-console.log(userData.name,userData.totalExpense)
+// console.log(userData.name,userData.totalExpense)
 leaderboardTableBody.appendChild(row)   })}
 else(
    alert("please buy a subscription")
@@ -239,8 +250,8 @@ function report(){
    const check =parseJwt(toke) 
    if (check.ispremiumuser){
       const response = await authenticatedAxios.get("premium/report");
-      console.log(response.data);
-      window.location.href='http://localhost:8080/premium/repor'}
+      // console.log(response.data);
+      window.location.href='http://localhost:8080/premium/reports'}
       else{
          alert("please buy a subscription")
       }
@@ -251,52 +262,10 @@ function report(){
       }
    });
    }
-   async function getExpenseReport() {
-      const yearInput = document.getElementById('year');
-      const year = yearInput.value;
-      console.log(year)
    
-      if (!year) {
-          alert('Please enter a year');
-          return;
-      }
-   
-      try {
-          const response = await authenticatedAxios.get(`/premium/report?year=${year}`);
-          console.log(response.data)
-          displayReport(response.data);
-      } catch (error) {
-          console.error('Error fetching expense report:', error);
-          alert('Error fetching expense report. Please check the console for details.');
-      }
-   }
-   
-   
-   //display report////////////////////////////////////////////////////////////////
-   function displayReport(data) {
-      const reportResult = document.getElementById('reportTable');
-      reportResult.innerHTML = '';
-   
-      if (data.length === 0) {
-          reportResult.innerHTML = 'No expenses found for the specified year.';
-          return;
-      }
-   
-      data.forEach(expense => {
-         const row = document.createElement("tr");
-         row.innerHTML = `
-         <td>${expense.date}</td>
-            <td>${expense.category}</td>
-            <td>${expense.pmethod}</td>
-            <td>${expense.amount}<span> Rs.</span></td>
-            
-         
-         `;
-         reportResult.appendChild(row);
-      });
-   
-   }
-   report()
+
+
+report()
    showLeaderboard()
 
 
@@ -326,7 +295,6 @@ function report(){
    }
 
 
-let page=1
 //get Expenses////////////////////////////////
 async function fetchExpenses() {
 

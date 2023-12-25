@@ -61,7 +61,7 @@ exports.forgotPasswordPost=async(req,res)=>{
                console.log('Email sent: ' + info.response);
              }
            })
-         console.log(link)
+        //  console.log(link)
  
         res.status(200).send(link)
  
@@ -149,9 +149,9 @@ exports.forgotPasswordPost=async(req,res)=>{
       }
   
       try {
-        console.log("Received Token:", token);
+        // console.log("Received Token:", token);
         const verify = jwt.verify(token, secret);
-        console.log("Decoded Token:", verify);
+        // console.log("Decoded Token:", verify);
   
         const password = req.body.password;
         const confirmPassword = req.body.confirmPassword;
