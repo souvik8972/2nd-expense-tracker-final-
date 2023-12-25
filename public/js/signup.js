@@ -24,10 +24,10 @@ async function onSignup(e) {
             email,
             password
         }
-        const response=await axios.post("http://localhost:8080/signup",data)
+        const response=await axios.post("/signup",data)
         Smessage.classList.add("success")
         setTimeout(()=> {Smessage.classList.remove("success")
-        window.location.href="http://localhost:8080/login"
+        window.location.href="/login"
     },1000)
         
 

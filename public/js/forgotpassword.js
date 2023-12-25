@@ -6,7 +6,7 @@ form.addEventListener("submit",async (e)=>{
     const data={
         email: email.value
     }
-    const response=await axios.post("http://localhost:8080/forgot-password",data) 
+    const response=await axios.post("/forgot-password",data) 
 if (response.status==200){
     alert("link sent successfully please check your mail..")
 }

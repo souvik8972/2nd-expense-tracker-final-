@@ -14,7 +14,7 @@ togglebtn.addEventListener("click",()=>{
  
        // Return the authenticated axios instance
        const authaxis =  axios.create({
-          baseURL: 'http://localhost:8080',
+          
           headers: {
              'Authorization': `Bearer ${token}`,
              
@@ -24,7 +24,7 @@ togglebtn.addEventListener("click",()=>{
        return authaxis;
     } else {
        alert("Please log in first");
-       window.location.href = "http://localhost:8080/login";
+       window.location.href = "/login";
     }
  }
 

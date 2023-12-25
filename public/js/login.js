@@ -13,14 +13,14 @@ async function login(e) {
             email: e.target.email.value,
             password: e.target.password.value,
         };
-        const response = await axios.post("http://localhost:8080/login", data);
+        const response = await axios.post("/login", data);
 
         if (response.status === 200) {
             
             localStorage.setItem("token", JSON.stringify({ name:response.data.name,token: response.data.token }));
             Smessage.classList.add("success")
         setTimeout(()=> {Smessage.classList.remove("success")
-        window.location.href="http://localhost:8080/dashboard"
+        window.location.href="/dashboard"
     },1000)
         }
     } catch (error) {

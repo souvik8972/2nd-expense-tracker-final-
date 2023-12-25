@@ -13,11 +13,11 @@ function authentication() {
          token = tokenData;
       }
 
-      console.log(token, "ttttt");
+      // console.log(token, "ttttt");
 
       // Return the authenticated axios instance
       const authaxis = axios.create({
-         baseURL: 'http://localhost:8080',
+       
          headers: {
             'Authorization': `Bearer ${token}`,
          },
@@ -26,7 +26,7 @@ function authentication() {
       return authaxis;
    } else {
       alert("Please log in first");
-      window.location.href = "http://localhost:8080/login";
+      window.location.href = "/login";
    }
 }
 
@@ -44,7 +44,7 @@ togglebtn.addEventListener("click",()=>{
  
   function logout(){
     localStorage.removeItem("token")
-    window.location.href = "http://localhost:8080";
+    window.location.href = "/";
     
  }
  
@@ -61,7 +61,7 @@ function report(){
     if (check.ispremiumuser){
        const response = await authenticatedAxios.get("premium/report");
       //  console.log(response.data);
-       window.location.href='http://localhost:8080/premium/reports'}
+       window.location.href='/premium/reports'}
        else{
           alert("please buy a subscription")
        }
@@ -92,7 +92,7 @@ function report(){
        }
     }
     
-    report()
+ 
     
     //display report////////////////////////////////////////////////////////////////
     function displayReport(data) {

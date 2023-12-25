@@ -18,7 +18,7 @@ function authentication() {
 
       // Return the authenticated axios instance
       const authaxis = axios.create({
-         baseURL: 'http://localhost:8080',
+         // baseURL: 'http://localhost:8080',
          headers: {
             'Authorization': `Bearer ${token}`,
          },
@@ -26,8 +26,9 @@ function authentication() {
 
       return authaxis;
    } else {
+      window.location.href = "/login";
       alert("Please log in first");
-      window.location.href = "http://localhost:8080/login";
+      
    }
 }
 
@@ -125,7 +126,7 @@ async function deleteExpense(e) {
 //logout //////////////////////////////////////////////////////////////////
 function logout(){
    localStorage.removeItem("token")
-   window.location.href = "http://localhost:8080";
+   window.location.href = "/";
    
 }
 
@@ -251,7 +252,7 @@ function report(){
    if (check.ispremiumuser){
       const response = await authenticatedAxios.get("premium/report");
       // console.log(response.data);
-      window.location.href='http://localhost:8080/premium/reports'}
+      window.location.href='/premium/reports'}
       else{
          alert("please buy a subscription")
       }
