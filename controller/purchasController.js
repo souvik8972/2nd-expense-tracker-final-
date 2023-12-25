@@ -2,10 +2,12 @@
 
 const Order = require('../model/orders');
 require("dotenv").config()
+const RAZORPAY_KEY_ID=process.env.RAZORPAY_KEY_ID
+const RAZORPAY_KEY_SECRET=process.env.RAZORPAY_KEY_SECRET
 const Razorpay = require('razorpay');
 
-const key_id = "rzp_test_FQUGalowc8Wx10";
-const key_secret ="GGlxuOFmXDq2TxXymELHWKht";
+const key_id = RAZORPAY_KEY_ID;
+const key_secret =RAZORPAY_KEY_SECRET;
 const secretKey=process.env.SECRET_KEY
 const jwt=require("jsonwebtoken")
 

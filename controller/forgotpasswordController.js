@@ -5,7 +5,8 @@ const jwt=require("jsonwebtoken")
 require("dotenv").config()
 const Forgotpassword=require("../model/forgotpasswordDb")
 var nodemailer = require('nodemailer');
-
+const NODE_MAILER_EMAIL=process.env.NODE_MAILER_EMAIL
+const NODE_MAILER_PASSWORD=process.env.NODE_MAILER_PASSWORD
 const secret=process.env.SECRET_KEY
 exports.forgotPasswordGet=(req,res)=>{
     res.sendFile("forgotpassword.html",{root:"views"})
@@ -39,8 +40,8 @@ exports.forgotPasswordPost=async(req,res)=>{
              service: 'gmail',
            
              auth: {
-                 user: 'souvik8582@gmail.com',
-                 pass: 'udqjuhqsgkofkvgy'
+                 user: NODE_MAILER_EMAIL,
+                 pass: NODE_MAILER_PASSWORD
              }
            });
            

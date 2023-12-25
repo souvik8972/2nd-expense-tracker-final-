@@ -1,4 +1,5 @@
 const express = require('express');
+const fs= require('fs');
 const app = express();
 const cors= require('cors');
 const path=require("path")
@@ -10,7 +11,9 @@ const Forgotpassword=require("./model/forgotpasswordDb")
 const bodyParser = require('body-parser')
 const helmet=require("helmet")
 const compression=require("compression")
-
+const morgan = require("morgan")
+require("dotenv").config()
+const PORT=process.env.PORT || 8080
 //
 
 const homeRoute=require("./routes/home")
@@ -19,9 +22,9 @@ const dashboardRoute=require("./routes/dashboard")
 const primemembership=require("./routes/purchase")
 const passwordRoute=require("./routes/forgotPassword")
 const premiumFeature=require("./routes/premiumFeature")
-// const pagenotfound=require("./routes/pagenotfound")
 
 
+const accessLogSteram=fs.createWriteStream(path.join(__dirname,"access.log"),{flags:"a"})
 //
 
 
@@ -31,7 +34,8 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, "public")))
 
 app.use(cors());
-///
+app.use(morgan(("combined",{stream:accessLogSteram})))
+////////
 
 app.use(homeRoute)
 app.use(userRoute)
@@ -57,8 +61,8 @@ User.hasMany(Forgotpassword);
 Forgotpassword.belongsTo(User);
 
 sequelize.sync().then(()=>{
-    app.listen(8080, ()=>{
-        console.log(`listen on port http://localhost:8080`)
+    app.listen(PORT, ()=>{
+        console.log(`listen on port http://localhost:${PORT}`)
         console.log('Database and tables synchronized!');
         
     })
