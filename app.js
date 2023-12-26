@@ -11,7 +11,7 @@ const Forgotpassword=require("./model/forgotpasswordDb")
 const bodyParser = require('body-parser')
 const helmet=require("helmet")
 const compression=require("compression")
-const morgan = require("morgan")
+// const morgan = require("morgan")
 require("dotenv").config()
 const PORT=process.env.PORT || 8080
 //
@@ -24,7 +24,7 @@ const passwordRoute=require("./routes/forgotPassword")
 const premiumFeature=require("./routes/premiumFeature")
 
 
-const accessLogSteram=fs.createWriteStream(path.join(__dirname,"access.log"),{flags:"a"})
+// const accessLogSteram=fs.createWriteStream(path.join(__dirname,"access.log"),{flags:"a"})
 //
 
 
@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, "public")))
 
 app.use(cors());
-app.use(morgan(("combined",{stream:accessLogSteram})))
+// app.use(morgan(("combined",{stream:accessLogSteram})))
 ////////
 
 app.use(homeRoute)
@@ -72,5 +72,5 @@ sequelize.sync().then(()=>{
 
 
 
-
+//test jenkins
 
