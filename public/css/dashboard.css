@@ -70,9 +70,9 @@ justify-content: space-around;
   color: #FFFFFF;
   cursor: pointer;
   font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.9vw;
   font-weight: 700;
-  line-height: 24px;
+  line-height: 2rem;
   opacity: 1;
   outline: 0 solid transparent;
   padding: 8px 18px;
@@ -86,9 +86,11 @@ justify-content: space-around;
 
 
 .nav .right ul li #logout{
-    width: 10vh ;
-    height: 5vh;
+    font-size: .6rem;
+    width:10vh ;
+    
     text-align: center;
+    padding: 0%;
     background-color: darkblue;
 }
 
@@ -284,7 +286,7 @@ option,label,select,input{
 @media screen and (max-width: 600px) {
     .nav{
     
-     height: 30vh;
+     height: 40vh;
      flex-direction: column;
     background: url("./img/left.jpg");
    padding: 10px 0 0 10px;
@@ -292,7 +294,9 @@ option,label,select,input{
  display: none;
  
     }
-    
+    .navbtn{
+        font-size: 2.1vw;
+    }
      .nav h1{
          display: none;
      }
@@ -345,6 +349,10 @@ option,label,select,input{
      }
      #form1 form{
          width:250px;
+     }
+     #form1 form #date{
+       
+        width: 100%;
      }
      .styled-table{
          overflow: scroll;
