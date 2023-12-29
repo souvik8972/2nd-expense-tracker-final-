@@ -70,7 +70,7 @@ justify-content: space-around;
   color: #FFFFFF;
   cursor: pointer;
   font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
-  font-size: 0.9vw;
+  font-size: 0.6vw;
   font-weight: 700;
   line-height: 2rem;
   opacity: 1;
@@ -282,6 +282,45 @@ option,label,select,input{
    
 }
 
+/* theme */
+
+.nav-dark{
+    background-color: #0f0f0f;
+  
+
+}
+.theme-dark{
+    color: #0000ff;
+   font-size: x-large;
+}
+.light{
+    color: #f7f7fb;
+}
+.dark{
+    color: #0202f5;
+}
+
+ .darkHeader{
+    color: white;
+    
+}
+.hero-dark{
+     background:#1c1c24;;
+}
+
+.hero  #form label #dark{
+    color: #f7f7fb;
+}
+.pagedark{
+    background-color: #010000;
+    color: #fafafa;
+}
+
+
+
+
+
+
 
 @media screen and (max-width: 600px) {
     .nav{
@@ -312,7 +351,9 @@ option,label,select,input{
          gap:20px;
         
      }
-     
+     .nav-dark{
+        background-color: #010000;
+     }
      
      #toggle{
          display: block;
@@ -376,6 +417,38 @@ option,label,select,input{
 }
 #sapn{
     color:black
+}
+.nav-dark{
+    background: #0f0f0f;
+  
+
+}
+.theme-dark{
+    color: #0000ff;
+   font-size: x-large;
+}
+.light{
+    color: #f7f7fb;
+}
+.dark{
+    color: #0202f5;
+}
+
+ .darkHeader{
+    color: white;
+    
+}
+.hero-dark{
+    background:#1c1c24;
+   
+}
+
+.hero  #form label #dark{
+    color: #f7f7fb;
+}
+.pagedark{
+    background-color: #010000;
+    color: #fafafa;
 }
 
  }
