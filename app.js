@@ -71,6 +71,5 @@ sequelize.sync().then(()=>{
 
 
 
-
 //test jenkins
 

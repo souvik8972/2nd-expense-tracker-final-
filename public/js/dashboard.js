@@ -373,3 +373,27 @@ async function fetchExpenses() {
 
 
 
+  
+  
+   const hero =document.querySelector(".hero")
+   const labels =document.querySelectorAll(".label")
+   const massage=document.getElementById("massage")
+ 
+   
+     const theme=document.getElementById("theme")
+     
+     theme.addEventListener("click",()=>{
+   
+       theme.classList.toggle("ri-sun-fill")
+       theme.classList.toggle("light")
+       nav.classList.toggle("nav-dark")
+       hero.classList.toggle("hero-dark")
+       massage.classList.toggle("light")
+      
+       page.classList.toggle("pagedark")
+       labels.forEach(label => {
+                   label.classList.toggle("light");
+               });
+   
+     })  
+     
