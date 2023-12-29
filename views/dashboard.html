@@ -33,6 +33,7 @@
                     <ul>
                         <li id="massage"></li>
                         <li><a href="" class="navbtn"id="rzp-button1">Buy Prime</a></li>
+                        <li ><i id="theme" class="ri-moon-fill theme-dark"></i></li>
                       
                         <li><button class="navbtn" id="logout">Log out</button></li>
                        
@@ -47,7 +48,7 @@
             <div class="form" id="form1"> 
                 <h1  >Add Expense</h1>
                 <form action="" method="" class="form" id="form">
-             <label for="options">Category</label>
+             <label class="label" for="options">Category</label>
             <select id="options" name="options" required>
                 
                 <option value="Movie">Movie</option>
@@ -56,7 +57,7 @@
                 <option value="Shopping">Shopping</option>
                 <option value="Others">Others</option>
             </select>
-            <label for="pmethod">Payment Method</label>
+            <label class="label" for="pmethod">Payment Method</label>
             <select id="pmethod" name="pmethod" required>
                 
                 <option value="Card">CARD</option>
@@ -65,9 +66,9 @@
               
             </select>
             <!-- <input type="text" name="pmethod" id=""> -->
-            <label for="amount">Amount</label>
+            <label class="label" for="amount">Amount</label>
             <input type="number" name="amount" id="">
-            <label for="date">Date</label>
+            <label class="label" for="date">Date</label>
             <input type="date" name="date" id="date">
             <button  id="button"> Add expense</button>
                     
@@ -90,14 +91,14 @@
                 </thead>
                 <tbody id="expenseTableBody">
                     <!-- Dummy Data -->
-                    <!-- <tr>
+                    <tr>
                         <td>Movie</td>
                         <td>Credit Card</td>
                         <td>20</td>
                         <td>2023-12-01</td>
                           
                         <td><button id="deleteButton" onclick=`deleteExpense(${expense.id})`>×</button></td>
-                    </tr> -->
+                    </tr>
                    
                     
                     <!-- Dummy Data -->
@@ -111,12 +112,12 @@
         <ul class="pagination" id="pagination">
 
            
-            <!-- <li class="pbutton activebtn"><a href="#">2</a></li>
-            <li class="pbutton"><a href="#">3</a></li>
             <li class="pbutton activebtn"><a href="#">2</a></li>
             <li class="pbutton"><a href="#">3</a></li>
             <li class="pbutton activebtn"><a href="#">2</a></li>
-            <li class="pbutton"><a href="#">3</a></li> -->
+            <li class="pbutton"><a href="#">3</a></li>
+            <li class="pbutton activebtn"><a href="#">2</a></li>
+            <li class="pbutton"><a href="#">3</a></li>
           
 
         </ul>
