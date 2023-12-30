@@ -316,7 +316,9 @@ option,label,select,input{
     color: #fafafa;
 }
 
-
+.darkbody{
+    background-color: #000000e6;
+}
 
 
 
@@ -450,5 +452,10 @@ option,label,select,input{
     background-color: #010000;
     color: #fafafa;
 }
+.headerdark{
+    color: #f7f7fb;
+}
+
+
 
  }

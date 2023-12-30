@@ -1,14 +1,14 @@
 const jwt = require("jsonwebtoken");
 const UserDb = require("../model/userDb");
-require('dotenv').config();
+require ("dotenv").config()
 
-const secretKey = "thisissecret";
+const secretKey=process.env.SECRET_KEY
 
 exports.auth= async (request, response, next) => {
     try {
         const authorizationHeader = request.headers.authorization;
 
-        // Check if the authorization header is present
+        // Checking  the authorization header is present or not present
         if (!authorizationHeader) {
             return response.status(401).json({ message: 'Authorization header is missing' });
         }
@@ -18,7 +18,7 @@ exports.auth= async (request, response, next) => {
         
       
 
-        // Check if the token is present
+        // Checking if the token is present or not
         if (!token) {
             return response.status(401).json({ message: 'Token is missing' });
         } else {
@@ -26,15 +26,13 @@ exports.auth= async (request, response, next) => {
             const decode = jwt.verify(token, secretKey);
             
 
-            // You can directly access the userId from the decoded payload
+            // decode userId from authorization token (jwt token)
             const userId = decode.userId;
              
-
-            // You may want to handle different errors separately
             const user = await UserDb.findByPk(userId);
             
 
-            // Attach the user to the request for later use
+            // Attach the user to the request for later use that will send to the next request
             request.user = user;
             
             next();

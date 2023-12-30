@@ -8,6 +8,10 @@ var nodemailer = require('nodemailer');
 const NODE_MAILER_EMAIL=process.env.NODE_MAILER_EMAIL
 const NODE_MAILER_PASSWORD=process.env.NODE_MAILER_PASSWORD
 const secret=process.env.SECRET_KEY
+
+
+
+
 exports.forgotPasswordGet=(req,res)=>{
     res.sendFile("forgotpassword.html",{root:"views"})
 }

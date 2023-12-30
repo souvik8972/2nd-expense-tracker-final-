@@ -378,6 +378,9 @@ async function fetchExpenses() {
    const labels =document.querySelectorAll(".label")
    const page1=document.querySelector(".pagination-container")
    const massage=document.querySelector("#massage")
+   const bodyy=document.body
+   const header=document.querySelector(".header")
+  
      const theme=document.getElementById("theme")
      console.log(theme)
      theme.addEventListener("click",()=>{
@@ -387,7 +390,9 @@ async function fetchExpenses() {
        nav.classList.toggle("nav-dark")
        hero.classList.toggle("hero-dark")
        massage.classList.toggle("light")
-      
+       bodyy.classList.toggle("darkbody")
+       header.classList.toggle("headerdark")
+       
        page1.classList.toggle("pagedark")
        labels.forEach(label => {
                    label.classList.toggle("light");
