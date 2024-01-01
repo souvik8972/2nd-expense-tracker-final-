@@ -8,7 +8,7 @@ var nodemailer = require('nodemailer');
 const NODE_MAILER_EMAIL=process.env.NODE_MAILER_EMAIL
 const NODE_MAILER_PASSWORD=process.env.NODE_MAILER_PASSWORD
 const secret=process.env.SECRET_KEY
-
+const WEBSITE=process.env.WEBSITE
 
 
 
@@ -45,7 +45,7 @@ exports.forgotPasswordPost=async(req,res)=>{
          //also creating a jwt token for more secure authentication
          const token=jwt.sign({email:oldUser.email ,id:oldUser.id},secret,{expiresIn:"10m"})
          //sending the link with uuid and token 
-         const link=`http://localhost:8080/resetpassword/${id}/${token}`
+         const link=`${WEBSITE}/resetpassword/${id}/${token}`
 
          //createing a transporter using nodemailer
          var transporter = nodemailer.createTransport({
