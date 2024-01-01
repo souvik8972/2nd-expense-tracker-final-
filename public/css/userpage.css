@@ -1,12 +1,63 @@
 
 	body {
 		color: #999;
-		background: url("./img/left.jpg");
+		
 
 		font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-		
+		overflow-x: hidden;
 	
 	}
+	.hero1{
+		width: 100%;
+		height:100%;
+
+		position: absolute;
+		right: 1vw;
+		top:2vh;
+		background: url("./img/Privacy\ policy-rafiki.svg");
+		background-repeat: no-repeat;
+z-index: -88;
+	}
+	.hero{
+		width: 100%;
+		height:100%;
+
+		position: absolute;
+		right: 1vw;
+		top:2vh;
+		background: url("./img/login2.svg");
+		background-repeat: no-repeat;
+		
+		z-index: -88;
+	}
+	.hero2{
+		width: 100%;
+		height:100%;
+
+		position: absolute;
+		right: 1vw;
+		top:2vh;
+		background: url("./img/Forgot\ password-rafiki\ \(1\).svg");
+		background-repeat: no-repeat;
+		
+		z-index: -88;
+	}
+/* animation  */
+@keyframes wave {
+    0%,100% {
+        transform: translateY(0)
+      }
+      20% {
+        transform: translateY(-10px)
+      }
+}
+
+.hero,.hero1,.hero2{
+	animation: wave 5s infinite  ease-in-out;
+}
+
+
+
 	nav .logo{
 		color: #1111c5;
 
@@ -24,7 +75,7 @@
     }
 	.signup-form {
 		width: 500px;
-		margin: 0 auto;
+		margin-left: 50vw ;
 		padding: 30px 0;
 	}
     .signup-form h2 {
@@ -93,12 +144,12 @@ z-index: -2;
 		color: black;
 		padding: 15px;
 		text-align: center;
-		background: rgba( 255, 255, 255, 0.25 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+		background: rgb(255, 255, 255);
+box-shadow: 0 8px 32px 0 rgb(255, 255, 255);
 backdrop-filter: blur( 4px );
 -webkit-backdrop-filter: blur( 4px );
 border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+border: 1px solid rgb(255, 255, 255);
 	}
 
 	nav a {
@@ -106,6 +157,11 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 		text-decoration: none;
 		margin: 0 15px;
 		width: 100%;
+		
+	}
+	
+	.logo a{
+font-size: xx-large;
 	}
 	nav{
 		display: flex;
@@ -137,14 +193,30 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 	margin: auto;
 }
 .text-center a{
+	cursor: pointer;
 	color: #1111c5;
 }
+
+
+#request{
+	
+	margin-left: 45%;
+}
+
+#login-form{
+	margin-top: 10vh;
+}
+
+
 @media only screen and (min-width: 601px){
 #toggle{
 	display: none !important;
 }
 
 }
+
+
+
 @media only screen and (max-width: 600px){
        
     /* #toggle{
@@ -157,18 +229,18 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 		height: 20vh;
 		width: 90%;
 	   top:0px;
-	   margin-left: auto;
+	   margin: auto;
 	   text-align: center;
-	  
+	  margin-top: 50px;
 	   align-items: center;
 	   justify-content: space-around;
 	 color: #ffffff;
-	 background: rgba(250, 250, 250, 0.597);
+	 background: rgba(250, 250, 250, 0.91);
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+border-bottom: 5px solid #1111c5;
 
-
+z-index: 888;
 
 	   display: none;
 	  
@@ -177,13 +249,16 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 	.signup-form{
 		width: 90%;
 		z-index: -2;
-		margin-top: 100px;
+		
+		margin: auto;
+		margin-top: 200px;
 	}
 	
 	.option a{
 		align-items: center;
 		color:#0000fb;
 		margin-top: 20px;
+		margin-left: 0%;
 	   
 	
 		
@@ -246,6 +321,10 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
    .signup-form form .form-group #request{
 	margin-left: 100px;
 }
+#login-form{
+	margin-top: 20vh;
+}
+
 }
 @media only screen 
 and (min-device-width : 768px) 

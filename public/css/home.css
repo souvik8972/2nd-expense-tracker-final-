@@ -133,8 +133,9 @@ color: #0202f5;
         color:#0202f5;
     }
     .option a:hover{
-        background-color: #0202f5;
-        color: #ffffff;
+    
+        text-decoration: underline;
+        color: #200bff;
 
     }
 
@@ -192,7 +193,9 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
         }
         .option a:hover {
-            background-color: #0735ee;
+            
+            text-decoration: underline;
+        
             color: #ffffff;
         }
        .active{

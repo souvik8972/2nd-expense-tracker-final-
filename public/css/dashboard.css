@@ -117,9 +117,11 @@ justify-content: space-around;
 }
 
 .hero{
-    background: url("./img/full.png");
-    background-position: bottom right;
+    background: url("./img/full.jpeg");
+    
     background-repeat: no-repeat;
+    background-size: contain;
+
    
    
 }
@@ -189,10 +191,13 @@ option,label,select,input{
 
 }
 .styled-table h2{
-    color:#f7f7fb;
-    background-color: #0202f5;
-    box-shadow: 2px 2px 2px  black;
-    font-family: 'Merienda', cursive;
+    color:#0000ff;
+    background: rgba( 255, 255, 255, 0 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 7px );
+    -webkit-backdrop-filter: blur( 7px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
     height: 5vh;
     
     
@@ -305,7 +310,9 @@ option,label,select,input{
     
 }
 .hero-dark{
-     background:#1c1c24;;
+     background:url("./img/Growing-rafiki\ \(1\).png");
+     background-repeat: no-repeat;
+     background-size: contain;
 }
 
 .hero  #form label #dark{
@@ -383,9 +390,9 @@ option,label,select,input{
      }
      .hero{
         
-         background-image: url("./img/right2.jpg");
+         background-image: url("./img/full.jpeg");
          background-size: cover;
-         background-position: center left ;
+         background-position: left center ;
      }
      #form1{
          text-align: center;
@@ -441,7 +448,10 @@ option,label,select,input{
     
 }
 .hero-dark{
-    background:#1c1c24;
+    background:url("./img/Growing-rafiki\ \(1\).png");
+    
+    background-size: cover;
+    background-position: left center ;
    
 }
 

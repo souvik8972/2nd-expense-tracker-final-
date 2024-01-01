@@ -267,7 +267,7 @@ function report(){
 
 
 report()
-   showLeaderboard()
+ showLeaderboard()
 
 
 
@@ -347,20 +347,21 @@ async function fetchExpenses() {
       console.log(response.data.totalpages)
       button=""
       for (let i=1; i<response.data.totalpages+1;i++){
-         button+=` <li class="pbutton"><a onclick=pagenum(${i}) href=#">${i}</a></li>`}
+         button+=` <li class="pbutton"><a onclick=pagenum(${i}) href=javascript:void(0)">${i}</a></li>`}
 
 
       document.getElementById("pagination").innerHTML=button 
 
      } catch (error) {
+      console.log(error)
       
      }
 
-
-
-
-
    }
+
+
+   
+
    //page number
    function pagenum (index){
       const pageno=document.getElementById("pageno")
@@ -373,7 +374,7 @@ async function fetchExpenses() {
 
 
 
-  
+  //dark mode
    const hero =document.querySelector(".hero")
    const labels =document.querySelectorAll(".label")
    const page1=document.querySelector(".pagination-container")

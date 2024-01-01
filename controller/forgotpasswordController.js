@@ -25,30 +25,39 @@ exports.forgotPasswordPost=async(req,res)=>{
     
  
      try {
+      //finding that user present or not present
          const oldUser=await User.findOne({
              where:{
                  email:email,
              }
          })
+         //if not present then 
          if (!oldUser){
              return res.status(404).json({"message": "User not found"})
          }
+         //if present then
         const id=uuid.v4()
-         oldUser.createForgotpassword({
+        //create a in db using uuid.v4() for unique id
+         await oldUser.createForgotpassword({
             id:id,
             isActive:true
          })
+         //also creating a jwt token for more secure authentication
          const token=jwt.sign({email:oldUser.email ,id:oldUser.id},secret,{expiresIn:"10m"})
+         //sending the link with uuid and token 
          const link=`http://localhost:8080/resetpassword/${id}/${token}`
+
+         //createing a transporter using nodemailer
          var transporter = nodemailer.createTransport({
              service: 'gmail',
            
              auth: {
-                 user: NODE_MAILER_EMAIL,
-                 pass: NODE_MAILER_PASSWORD
+                 user: NODE_MAILER_EMAIL,//user Email
+                 pass: NODE_MAILER_PASSWORD //user Email password
              }
            });
            
+           //creating a option for interface of the mail
            var mailOptions = {
              from: 'souvik8582@gmail.com',
              to: oldUser.email,
@@ -59,6 +68,7 @@ exports.forgotPasswordPost=async(req,res)=>{
              <a href=${link}>Reset password</a>`,
            };
            
+           //sending mail
            transporter.sendMail(mailOptions, function(error, info){
              if (error) {
                console.log(error);
@@ -66,8 +76,8 @@ exports.forgotPasswordPost=async(req,res)=>{
                console.log('Email sent: ' + info.response);
              }
            })
-        //  console.log(link)
- 
+        
+           //sending response of successful
         res.status(200).send(link)
  
  
@@ -100,7 +110,7 @@ exports.forgotPasswordPost=async(req,res)=>{
               <a href="/">home</a>
           </html>`)
         }
-        forgotpassword.update({
+       await forgotpassword.update({
             isActive:false
         })
         
