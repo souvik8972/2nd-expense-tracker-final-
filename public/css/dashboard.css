@@ -286,6 +286,15 @@ option,label,select,input{
     width: 50%;
    
 }
+#limit{
+    width: 10vh;
+    color: #0000ff;
+    
+}
+h5{
+    color: #0202f5;
+}
+
 
 /* theme */
 

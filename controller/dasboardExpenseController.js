@@ -67,8 +67,8 @@ exports.getExpenses = async (req, res) => {
   const user = req.user;
   try {
     //getting page information
-   const page=req.query.page
-   const limit =5
+   const page=parseInt(req.query.page)
+   const limit =parseInt(req.query.limit)
 
 //skip the expense for that seeting offset
     const offset=(page-1)*limit

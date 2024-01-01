@@ -303,8 +303,10 @@ async function fetchExpenses() {
       
      
       const authenticatedAxios = authentication();
-      const response = await authenticatedAxios.get(`/getExpenses?page=${page}`);
+      const limit=parseInt(limitBtn.value)
+      const response = await authenticatedAxios.get(`/getExpenses?page=${page}&limit=${limit}`);
       const expenses = response.data.userexpense;
+      console.log(response.data)
       const totalshow=document.getElementById("total")
 
       // Update the table with fetched expenses
@@ -338,12 +340,19 @@ async function fetchExpenses() {
 
 
 
+const limitBtn=document.getElementById("limit");
 
+limitBtn.addEventListener("change",(e)=>{
+   page=1
+   fetchExpenses()
+   showpage()
+})
 
    async function showpage(){
     
      try {
-       const response = await authenticatedAxios.get(`/getExpenses?page=${page}`);
+      const limit=parseInt(limitBtn.value)
+       const response = await authenticatedAxios.get(`/getExpenses?page=${page}&limit=${limit}`);
       console.log(response.data.totalpages)
       button=""
       for (let i=1; i<response.data.totalpages+1;i++){
