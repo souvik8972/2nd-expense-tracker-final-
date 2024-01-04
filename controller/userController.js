@@ -59,7 +59,7 @@ exports.getlogin=(req,res)=>{
                             //post login
 
 
-exports.postLogin =async(req,res)=>{
+exports.postLogin = async(req,res)=>{
     try {
         const {email,password} = req.body
         //checking is user present or not
